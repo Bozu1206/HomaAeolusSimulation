@@ -40,8 +40,7 @@ class HomaPkt : public HomaPkt_Base
     void copy(const HomaPkt& other);
 
   PUBLIC:
-    HomaPkt(HomaTransport* ownerTransport = NULL, const char *name=NULL,
-        int kind=0);
+    HomaPkt(HomaTransport* ownerTransport = NULL, const char *name=NULL, int kind=0);
     HomaPkt(const HomaPkt& other);
     HomaPkt& operator=(const HomaPkt& other);
     virtual HomaPkt *dup() const;

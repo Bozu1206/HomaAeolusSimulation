@@ -32,6 +32,7 @@ class MsgSizeDistributions {
         FABRICATED_HEAVY_MIDDLE,
         FABRICATED_HEAVY_HEAD,
         TEST_DIST,
+        SIMPLE_WORKLOAD, // to be removed
         NO_SIZE_DIST_SPECIFIED //Should always remain the last
 
     };
@@ -42,6 +43,7 @@ class MsgSizeDistributions {
         GAUSSIAN,
         FACEBOOK_PARETO,
         CONSTANT,
+        SIMPLE,
         NO_INTERARRIAVAL_DIST_SPECIFIED //Should always remain the last
     };
 

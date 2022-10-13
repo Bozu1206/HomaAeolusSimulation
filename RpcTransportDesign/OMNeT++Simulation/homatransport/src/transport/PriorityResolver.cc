@@ -18,10 +18,13 @@ PriorityResolver::PriorityResolver(HomaConfigDepot* homaConfig,
     , prioResMode()
     , homaConfig(homaConfig)
 {
+    std::cout << "Init priorityResolver() invoked" << std::endl; 
     distEstimator->getCbfFromCdf(distEstimator->cdfFromFile,
         homaConfig->cbfCapMsgSize, homaConfig->boostTailBytesPrio);
+
     distEstimator->getRemainSizeCdfCbf(distEstimator->cdfFromFile,
         homaConfig->cbfCapMsgSize, homaConfig->boostTailBytesPrio);
+
     prioResMode = strPrioModeToInt(homaConfig->unschedPrioResolutionMode);
     setPrioCutOffs();
 }

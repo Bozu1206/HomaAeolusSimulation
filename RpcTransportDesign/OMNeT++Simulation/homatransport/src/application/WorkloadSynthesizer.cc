@@ -161,6 +161,7 @@ WorkloadSynthesizer::initialize()
     const char* workLoadType = par("workloadType").stringValue();
     MsgSizeDistributions::DistributionChoice distSelector;
     std::string distFileName;
+    std::cout << workLoadType << endl; 
     if (strcmp(workLoadType, "DCTCP") == 0) {
         distSelector = MsgSizeDistributions::DistributionChoice::DCTCP;
         distFileName = std::string(
@@ -188,8 +189,7 @@ WorkloadSynthesizer::initialize()
                 FACEBOOK_CACHE_FOLLOWER_INTRACLUSTER;
         distFileName = std::string("../../sizeDistributions/"
                 "Facebook_CacheFollowerDist_IntraCluster.txt");
-    } else if (strcmp(workLoadType, "GOOGLE_ALL_RPC")
-            == 0) {
+    } else if (strcmp(workLoadType, "GOOGLE_ALL_RPC") == 0) {
         distSelector =
                 MsgSizeDistributions::DistributionChoice::
                 GOOGLE_ALL_RPC;
@@ -227,8 +227,13 @@ WorkloadSynthesizer::initialize()
                 MsgSizeDistributions::DistributionChoice::SIZE_IN_FILE;
         distFileName = std::string(
                 "../../sizeDistributions/HostidSizeInterarrival.txt");
+    } else if (strcmp(workLoadType, "SIMPLE_WORKLOAD") == 0){
+        distSelector =
+                MsgSizeDistributions::DistributionChoice::SIMPLE_WORKLOAD;
+        distFileName =
+                std::string("../../sizeDistributions/simple.txt");
     } else {
-        throw cRuntimeError("'%s': Not a valie workload type.",workLoadType);
+        throw cRuntimeError("'%s': Not a valid workload type.", workLoadType);
     }
 
     HomaPkt homaPkt = HomaPkt();
@@ -248,12 +253,21 @@ WorkloadSynthesizer::initialize()
             "facebook_key_value") == 0){
         interArrivalDist =
                 MsgSizeDistributions::InterArrivalDist::FACEBOOK_PARETO;
-    } else {
+    } else if (strcmp(par("interArrivalDist").stringValue(), "SIMPLE") == 0) {
+        interArrivalDist = MsgSizeDistributions::InterArrivalDist::SIMPLE;
+    } 
+    else {
         throw cRuntimeError("'%s': Not a valid Interarrival Distribution",
                 par("interArrivalDist").stringValue());
     }
 
-    double avgRate = par("loadFactor").doubleValue() * nicLinkSpeed;
+
+    if (distSelector == MsgSizeDistributions::DistributionChoice::SIMPLE_WORKLOAD) {
+                std::cout << "The test is working" << endl;
+    }
+
+    //double avgRate = par("loadFactor").doubleValue() * nicLinkSpeed;
+    double avgRate = 0.0001 * nicLinkSpeed;
     msgSizeGenerator = new MsgSizeDistributions(distFileName.c_str(),
             maxDataBytesPerPkt, interArrivalDist, distSelector, avgRate,
             parentHostIdx);
@@ -397,14 +411,21 @@ WorkloadSynthesizer::sendMsg()
         destAddrs = hostIdAddrMap[nextDestHostId];
     }
     char msgName[100];
-    sprintf(msgName, "WorkloadSynthesizerMsg-%d", numSent);
+    sprintf(msgName, "WorkloadSynthesizerMsg-%d ", numSent);
+
     AppMessage *appMessage = new AppMessage(msgName);
+    
     appMessage->setByteLength(sendMsgSize);
     appMessage->setDestAddr(destAddrs);
     appMessage->setSrcAddr(srcAddress);
     appMessage->setMsgCreationTime(appMessage->getCreationTime());
     appMessage->setTransportSchedDelay(appMessage->getCreationTime());
+    
     emit(sentMsgSignal, appMessage);
+
+    std::cout << "WS::sendMsg : \n \t send message : " 
+              << msgName << "from App to Transport" << endl; 
+
     send(appMessage, "transportOut");
     numSent++;
 }
@@ -414,6 +435,12 @@ WorkloadSynthesizer::processStart()
 {
     // set srcAddress. The assumption here is that each host has only one
     // non-loopback interface and the IP of that interface is srcAddress.
+
+    std::cout << "========================================================" << endl;
+    std::cout << "Calling processStart() for module : " << getFullName() << "" << endl;
+    std::cout << "=======================================================" << endl;
+
+
     inet::InterfaceTable* ifaceTable =
             check_and_cast<inet::InterfaceTable*>(
             getModuleByPath(par("interfaceTableModule").stringValue()));
@@ -452,11 +479,13 @@ WorkloadSynthesizer::processStart()
 
 void
 WorkloadSynthesizer::processStop() {
+    std::cout << "WS::processStop: \n \t Stopping" << endl;
 }
 
 void
 WorkloadSynthesizer::processSend()
 {
+    std::cout << "WS::processSend : \n \t calling sendMsg()..." << endl; 
     sendMsg();
     setupNextSend();
 }
@@ -467,12 +496,21 @@ WorkloadSynthesizer::setupNextSend()
     double nextSendInterval;
     msgSizeGenerator->getSizeAndInterarrival(sendMsgSize, nextDestHostId,
         nextSendInterval);
+    
     simtime_t nextSendTime = nextSendInterval + simTime();
-    if (sendMsgSize < 0 || nextSendTime > stopTime) {
+    
+    std::cout  << "WS::setupNextSend : \n \t sendMsgSize = " << sendMsgSize 
+               << "\n \t nextDestHostId : " << nextDestHostId 
+               << "\n \t nextSendInterval : " << nextSendInterval 
+               << "\n \t nextSendTime : " << nextSendTime << endl; 
+
+    if (sendMsgSize < 0 || nextSendTime > stopTime) 
+    {
         selfMsg->setKind(STOP);
         scheduleAt(stopTime, selfMsg);
         return;
     }
+
     ASSERT(selfMsg->getKind() == SelfMsgKinds::SEND);
     scheduleAt(nextSendTime, selfMsg);
 }
@@ -480,13 +518,14 @@ WorkloadSynthesizer::setupNextSend()
 void
 WorkloadSynthesizer::processRcvdMsg(cPacket* msg)
 {
+    EV_INFO << "Enter WS::processRcvdMsg function" << endl;
     AppMessage* rcvdMsg = check_and_cast<AppMessage*>(msg);
     emit(rcvdMsgSignal, rcvdMsg);
     simtime_t completionTime = simTime() - rcvdMsg->getMsgCreationTime();
     emit(msgE2EDelaySignal, completionTime);
     uint64_t msgByteLen = (uint64_t)(rcvdMsg->getByteLength());
     EV_INFO << "Received a message of length " << msgByteLen
-            << "Bytes" << endl;
+            << " Bytes" << endl;
 
     double idealDelay = idealMsgEndToEndDelay(rcvdMsg);
     double queuingDelay =  completionTime.dbl() - idealDelay;
@@ -535,7 +574,14 @@ WorkloadSynthesizer::processRcvdMsg(cPacket* msg)
     emit(mesgStatsSignal, &mesgStats);
 
     delete rcvdMsg;
+    EV_INFO << "Number received = " << numReceived << endl;
     numReceived++;
+
+//    if (numReceived >= 5)
+//    {
+//        processStop();
+//    }
+
 }
 
 /** The proper working of this part of the code depends on the

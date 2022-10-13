@@ -45,7 +45,7 @@ class PriorityResolver;
 /**
  * A grant based, receiver driven, congection control transport protocol over
  * UDP datagrams. For every message transmission, the sender side sends a req.
- * pkt defining the length of the message. The reciever on the other side sends
+ * pkt defining the length of the message. The receiver on the other side sends
  * a grant every packet time for the shortest remaining outstanding message
  * among all outstanding messages.
  */
@@ -62,7 +62,7 @@ class HomaTransport : public cSimpleModule
      * Represents and handles transmiting a message from the senders side.
      * For each message represented by this class, this class exposes the api
      * for sending the req. pkt and some number of unscheduled pkts following
-     * the request. This class also allows scheduled data to transmitted.
+     * the request. This class also allows scheduled data to be transmitted.
      */
     class OutboundMessage
     {
@@ -90,10 +90,8 @@ class HomaTransport : public cSimpleModule
             bool operator()(const HomaPkt* pkt1, const HomaPkt* pkt2);
         };
 
-        typedef std::priority_queue<
-            HomaPkt*,
-            std::vector<HomaPkt*>,
-            OutbndPktSorter> OutbndPktQueue;
+        typedef 
+        std::priority_queue<HomaPkt*, std::vector<HomaPkt*>, OutbndPktSorter>   OutbndPktQueue;
 
         // getters functions
         const uint32_t& getMsgSize() { return msgSize; }
@@ -122,7 +120,7 @@ class HomaTransport : public cSimpleModule
         // sent to the network interface for transmission.
         uint32_t bytesLeft;
 
-        // Total unsched bytes left to be transmitted for this messge.
+        // Total unsched bytes left to be transmitted for this message.
         uint32_t unschedBytesLeft;
 
         // Next time this message expects an unsched packet must be sent. This
@@ -139,10 +137,10 @@ class HomaTransport : public cSimpleModule
         // packet that is request packet, so this vector is at least size 1.
         std::vector<uint16_t> reqUnschedDataVec;
 
-        // IpAddress of destination host for this outbound msg.
+        // Ip Address of destination host for this outbound msg.
         inet::L3Address destAddr;
 
-        // IpAddress of sender host (local host).
+        // Ip Address of sender host (local host).
         inet::L3Address srcAddr;
 
         // Simulation global time at which this message was originally created
@@ -164,8 +162,7 @@ class HomaTransport : public cSimpleModule
 
       PRIVATE:
         void copy(const OutboundMessage &other);
-        std::vector<uint32_t> getUnschedPerPrio(
-            std::vector<uint32_t>& unschedPrioVec);
+        std::vector<uint32_t> getUnschedPerPrio(std::vector<uint32_t>& unschedPrioVec);
         friend class SendController;
         friend class PriorityResolver;
     };
@@ -180,14 +177,23 @@ class HomaTransport : public cSimpleModule
     class SendController
     {
       PUBLIC:
+        // MAP : k = uint64_t --> v = OutboundMessage
+        // the key is the message id ans the value is the corresponding outboundmessage
         typedef std::unordered_map<uint64_t, OutboundMessage> OutboundMsgMap;
+
+        // Constructor and destructor
         SendController(HomaTransport* transport);
         ~SendController();
-        void initSendController(HomaConfigDepot* homaConfig,
-            PriorityResolver* prioResolver);
+
+        // Init the sender
+        void initSendController(HomaConfigDepot* homaConfig, PriorityResolver* prioResolver);
+        
         void processSendMsgFromApp(AppMessage* msg);
         void processReceivedGrant(HomaPkt* rxPkt);
+        
+        //getter
         OutboundMsgMap* getOutboundMsgMap() {return &outboundMsgMap;}
+        
         void sendOrQueue(cMessage* msg = NULL);
         void handlePktTransmitEnd();
 
@@ -251,8 +257,7 @@ class HomaTransport : public cSimpleModule
 
         // Queue for keeping grants that receiver side of this host machine
         // wants to send out.
-        std::priority_queue<HomaPkt*, std::vector<HomaPkt*>,
-            HomaPkt::HomaPktSorter> outGrantQueue;
+        std::priority_queue<HomaPkt*, std::vector<HomaPkt*>, HomaPkt::HomaPktSorter> outGrantQueue;
 
         // Transport that owns this SendController.
         HomaTransport* transport;
@@ -260,11 +265,11 @@ class HomaTransport : public cSimpleModule
         // The object that keeps the configuration parameters for the transport
         HomaConfigDepot *homaConfig;
 
-        // Tracks the begining of time periods during which outstanding bytes is
+        // Tracks the beginning of time periods during which outstanding bytes is
         // nonzero.
         simtime_t activePeriodStart;
 
-        // Tracks the bytes received during each active period.
+        // Tracks the number of bytes received during each active period.
         uint64_t sentBytesPerActivePeriod;
 
         // Tracks sum of grant pkts received between two respective received
@@ -287,10 +292,11 @@ class HomaTransport : public cSimpleModule
         explicit InboundMessage();
         explicit InboundMessage(const InboundMessage& other);
         explicit InboundMessage(HomaPkt* rxPkt, ReceiveScheduler* rxScheduler,
-            HomaConfigDepot* homaConfig);
+                                HomaConfigDepot* homaConfig);
         ~InboundMessage();
 
       PUBLIC:
+        // List of triples
         typedef std::list<std::tuple<uint32_t, uint16_t, simtime_t>> GrantList;
 
         /**
@@ -353,10 +359,10 @@ class HomaTransport : public cSimpleModule
         // send for this message.
         uint32_t bytesToGrant;
 
-        // Tracks the next for this messaage that is to be scheduled for
+        // Tracks the next for this message that is to be scheduled for
         // transmission by next grant packet. This value is monotonically
-        // increasing and together with next grantSize, uinquely identifies the
-        // nest chunck of data bytes in the message will be tranmitted by the
+        // increasing and together with next grantSize, uniquely identifies the
+        // next chunck of data bytes in the message that will be tranmitted by the
         // sender.
         uint32_t offset;
 
@@ -380,7 +386,7 @@ class HomaTransport : public cSimpleModule
         // receiver sends grants for this message.
         uint32_t schedBytesOnWire;
 
-        // Total bytes transmitted on wire for this message
+        // Total bytes transmitted on wire for this message (data + headers )
         uint32_t totalBytesOnWire;
 
         // All unscheduled bytes that come in req. pkt and the following
@@ -438,10 +444,14 @@ class HomaTransport : public cSimpleModule
         void copy(const InboundMessage& other);
         void fillinRxBytes(uint32_t byteStart, uint32_t byteEnd,
             PktType pktType);
+
         uint32_t schedBytesInFlight();
         uint32_t unschedBytesInFlight();
+        
         HomaPkt* prepareGrant(uint16_t grantSize, uint16_t schedPrio);
+        
         AppMessage* prepareRxMsgForApp();
+        
         void updatePerPrioStats();
     };
 
@@ -460,9 +470,11 @@ class HomaTransport : public cSimpleModule
 
         class UnschedRateComputer {
           PUBLIC:
-            UnschedRateComputer(HomaConfigDepot* homaConfig,
-                bool computeAvgUnschRate = false, double minAvgTimeWindow = .1);
+            UnschedRateComputer(HomaConfigDepot* homaConfig, 
+                  bool computeAvgUnschRate = false, double minAvgTimeWindow = .1);
+           
             double getAvgUnschRate(simtime_t currentTime);
+           
             void updateUnschRate(simtime_t arrivalTime, uint32_t bytesRecvd);
 
           PUBLIC:
@@ -483,13 +495,17 @@ class HomaTransport : public cSimpleModule
             SenderState(inet::IPv4Address srcAddr,
                 ReceiveScheduler* rxScheduler, cMessage* grantTimer,
                 HomaConfigDepot* homaConfig);
+
             ~SenderState(){}
+
             const inet::IPv4Address& getSenderAddr() {
                 return senderAddr;
             }
-            simtime_t getNextGrantTime(simtime_t currentTime,
-                uint32_t grantSize);
+
+            simtime_t getNextGrantTime(simtime_t currentTime, uint32_t grantSize);
+
             int sendAndScheduleGrant(uint32_t grantPrio);
+
             std::pair<bool, int> handleInboundPkt(HomaPkt* rxPkt);
 
           PROTECTED:
@@ -668,7 +684,7 @@ class HomaTransport : public cSimpleModule
         // wasted. ie. the senders are delaying sending the grants back.
         cMessage* schedBwUtilTimer;
 
-        // The lenght of time interval during which if we don't receive a
+        // The length of time interval during which if we don't receive a
         // packet, receiver inbound bw is considered wasted.
         simtime_t bwCheckInterval;
 
@@ -680,6 +696,7 @@ class HomaTransport : public cSimpleModule
         // that the receiver knows they must arrive in the future.
         std::vector<uint32_t> inflightUnschedPerPrio;
         std::vector<uint32_t> inflightSchedPerPrio;
+
         uint64_t inflightSchedBytes;
         uint64_t inflightUnschedBytes;
 
@@ -731,7 +748,7 @@ class HomaTransport : public cSimpleModule
         // In Homa, number of scheduled senders that receiver is granting
         // at any point of time changes depending on the number of senders and
         // numToGrant and the receiver's bandwidth that is being wasted. This
-        // varible tracks the current number sched senders that  receiver is
+        // variable tracks the current number sched senders that  receiver is
         // actively granting. The value of this variable is obtained through
         // calling SchedSenders::numActiveSenders() method.
         uint16_t numActiveScheds;
@@ -822,7 +839,7 @@ class HomaTransport : public cSimpleModule
         SEND  = 3,   // For the send timer, under normal transmit state.
         EMITTER = 4, // When emitSignalTimer is ready to be scheduled.
         BW_CHECK = 5,// For schedBwUtilTimer, when it's active.
-        STOP  = 6    // When trasnport shutting down and in the cleaning phase.
+        STOP  = 6    // When transport shutting down and in the cleaning phase.
     };
 
   PUBLIC:
@@ -847,7 +864,7 @@ class HomaTransport : public cSimpleModule
     UDPSocket socket;
 
     // IpAddress of sender host (local host). This parameter is lazily
-    // intialized first time an outbound message is arrvied from application or
+    // initialized first time an outbound message is arrived from application or
     // a packet has arrived from outside world.
     inet::L3Address localAddr;
 
@@ -866,7 +883,7 @@ class HomaTransport : public cSimpleModule
     // completed.
     cMessage* sendTimer;
 
-    // This timer is used to priodically emit signals that are received at the
+    // This timer is used to periodically emit signals that are received at the
     // global simulation level by the GlobalSignalListener.
     cMessage* emitSignalTimer;
 

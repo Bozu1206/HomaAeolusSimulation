@@ -67,6 +67,9 @@ WorkloadEstimator::WorkloadEstimator(HomaConfigDepot* homaConfig)
         } else if (strcmp(workloadType, "PRESET_IN_FILE") == 0) {
             distFileName = std::string("../../sizeDistributions/"
                     "Fabricated_Heavy_Middle.txt");
+        } else if (strcmp(workloadType, "SIMPLE_WORKLOAD") == 0){
+            distFileName = std::string("../../sizeDistributions/"
+                    "simple.txt");
         } else {
             throw cRuntimeError("'%s': Not a valid workload type.",
             workloadType);
@@ -80,6 +83,8 @@ WorkloadEstimator::WorkloadEstimator(HomaConfigDepot* homaConfig)
         // The first line of distFileName is the average message size of the
         // distribution.
         getline(distFileStream, avgMsgSizeStr);
+        std::cout << avgMsgSizeStr << endl; 
+        
         sscanf(avgMsgSizeStr.c_str(), "%lf", &avgSizeFromFile);
         if (strcmp(workloadType, "DCTCP") == 0) {
             HomaPkt homaPkt = HomaPkt();
@@ -100,6 +105,8 @@ WorkloadEstimator::WorkloadEstimator(HomaConfigDepot* homaConfig)
             cdfFromFile.push_back(std::make_pair(msgSize, prob));
         }
         distFileStream.close();
+
+
 
         // if the workloadType is FacebookKeyValue, half of the size
         // distribution is given by analytical formula and we need to complete

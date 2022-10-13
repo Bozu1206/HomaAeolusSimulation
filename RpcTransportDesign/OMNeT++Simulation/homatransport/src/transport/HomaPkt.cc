@@ -75,11 +75,12 @@ HomaPkt::headerSize()
                     getUnschedFields().prioUnschedBytes)::value_type)*2;
             break;
         case PktType::GRANT:
-            size += (sizeof(getGrantFields().grantBytes) +
-                sizeof(getGrantFields().offset) +
-                sizeof(getGrantFields().schedPrio) +
-                getGrantFields().sizeReqBytesPrio.size() *
-                sizeof(decltype(getGrantFields().sizeReqBytesPrio)::value_type)+
+            size += 
+               (sizeof(getGrantFields().grantBytes) +
+                sizeof(getGrantFields().offset)     +
+                sizeof(getGrantFields().schedPrio)  +
+                getGrantFields().sizeReqBytesPrio.size() 
+                * sizeof(decltype(getGrantFields().sizeReqBytesPrio)::value_type) +
                 getGrantFields().sizeUnschedBytesPrio.size() *
                 sizeof(decltype(
                 getGrantFields().sizeUnschedBytesPrio)::value_type));
@@ -87,7 +88,7 @@ HomaPkt::headerSize()
 
         case PktType::SCHED_DATA:
             size += (sizeof(getSchedDataFields().firstByte) +
-                    sizeof(getSchedDataFields().lastByte));
+                     sizeof(getSchedDataFields().lastByte));
             break;
         default:
             break;
@@ -213,7 +214,7 @@ HomaPkt::getBytesOnWire(uint32_t numDataBytes, PktType homaPktType)
     // FIXME: Using this function can cause bugs in general since HomaPkt
     // header size can be different for two pkts of same type (eg.
     // grant pkts). Care must be taken when using this function. Solution:
-    // Better to have a version of this function that takes in a poiter to the
+    // Better to have a version of this function that takes in a pointer to the
     // pkt and uses the real header size of the packet to do calcualtion when
     // possible. This requires to find all invokations of this function and
     // replace them with the new function when possible.  

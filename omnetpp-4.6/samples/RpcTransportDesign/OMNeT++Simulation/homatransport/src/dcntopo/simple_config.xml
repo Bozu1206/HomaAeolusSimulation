@@ -1,0 +1,59 @@
+<!--XML config file for perhost configuration of simulation. Define per host
+    configuration under hostConfig/param tag if you want. The hosts are
+    distinguished by "id" attribute of hostConfig tag. The
+    hostConfig/transportConfig tag is defined for transport config params of the
+    host and hostConfig/appConfig tag is to set WorkloadSynthesizer
+    parameters.-->
+<topologyConfig>
+    <param>
+    </param>
+
+    <IPv4Configurator>
+        <config>
+            <interface hosts='**.host[0..3]' address='10.x.0.0' netmask='255.x.x.x'/>
+            <interface hosts='**' address='10.x.x.x' netmask='255.x.x.x'/>
+        </config>
+    </IPv4Configurator>
+
+    <!--id attribute is the index of this host in the topology's hosts vector-->
+    <hostConfig id="0">
+        <transportConfig>
+        </transportConfig>
+        <appConfig>
+            <!--if true, this host app will send messages as well-->
+            <isSender>true</isSender>
+            <!--One of the three patterns: 1) the space separated positive ids of the hosts that
+                 this app will send messages to. 2) If empty, it means the app will send randomly
+                 to every possible host in the topology. 3) If -1, this app sends to all possible
+                 hosts except itself.-->
+            <destIds>-1</destIds>
+        </appConfig>
+    </hostConfig>
+
+    <hostConfig id="1">
+        <transportConfig>
+        </transportConfig>
+        <appConfig>
+            <isSender>true</isSender>
+            <destIds>-1</destIds>
+        </appConfig>
+    </hostConfig>
+
+    <hostConfig id="2">
+        <transportConfig>
+        </transportConfig>
+        <appConfig>
+            <isSender>true</isSender>
+            <destIds>-1</destIds>
+        </appConfig>
+    </hostConfig>
+
+    <hostConfig id="3">
+        <transportConfig>
+        </transportConfig>
+        <appConfig>
+            <isSender>true</isSender>
+            <destIds>-1</destIds>
+        </appConfig>
+    </hostConfig>
+</topologyConfig>

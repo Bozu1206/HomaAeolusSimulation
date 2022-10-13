@@ -46,6 +46,10 @@ MsgSizeDistributions::MsgSizeDistributions(const char* distFileName,
         throw MsgSizeDistException("Invalid MsgArrival Distribution Selected.");
     }
 
+    if (interArrivalDist == InterArrivalDist::SIMPLE) {
+        std::cout << "YO" ;
+    }
+
     if (sizeDistSelector == DistributionChoice::SIZE_IN_FILE){
         ASSERT(interArrivalDist == InterArrivalDist::INTERARRIVAL_IN_FILE);
         double dt = 0.0;
@@ -78,7 +82,9 @@ MsgSizeDistributions::MsgSizeDistributions(const char* distFileName,
             avgMsgSize *= maxDataBytesPerPkt; // AvgSize in terms of bytes
         }
 
-        avgInterArrivalTime = 1e-9 * avgMsgSize * 8  / avgRate;
+        //avgInterArrivalTime = 1e-9 * avgMsgSize * 8  / avgRate;
+        avgInterArrivalTime = 1; 
+        std::cout << "avgInterArrivalTime : " << avgInterArrivalTime << endl;
 
         // reads msgSize<->probabilty pairs from "distFileName" file
         while(getline(distFileStream, sizeProbStr)) {
@@ -109,8 +115,6 @@ MsgSizeDistributions::getSizeAndInterarrival(int &msgSize, int &destHostId,
         case DistributionChoice::FABRICATED_HEAVY_MIDDLE:
         case DistributionChoice::FABRICATED_HEAVY_HEAD:
         case DistributionChoice::TEST_DIST:
-            getInterarrivalSizeFromVec(msgSize, nextInterarrivalTime);
-            return;
         case DistributionChoice::FACEBOOK_KEY_VALUE:
             getFacebookSizeInterarrival(msgSize, nextInterarrivalTime);
             return;
@@ -118,6 +122,12 @@ MsgSizeDistributions::getSizeAndInterarrival(int &msgSize, int &destHostId,
             getInfileSizeInterarrivalDest(msgSize, destHostId, 
                 nextInterarrivalTime);
             return;
+
+        case DistributionChoice::SIMPLE_WORKLOAD: 
+            std::cout << "Test with deterministic dist" << endl;
+            msgSize = 1000000; 
+            nextInterarrivalTime = 1.0; 
+            return; 
         default:
             msgSize = -1;
             nextInterarrivalTime = 0.0;

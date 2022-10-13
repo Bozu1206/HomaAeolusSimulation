@@ -23,7 +23,7 @@ import homatransport.application.ITrafficGeneratorApp;
 simple WorkloadSynthesizer like ITrafficGeneratorApp
 {
     parameters:
-        xml appConfig = default(xml("<isSender/>true<destIds/><destIds></destIds>"));
+        xml appConfig = default(xml("<isSender/>false<destIds/><destIds></destIds>"));
         string interfaceTableModule;   // The path to the InterfaceTable module
 
         // a space sperated list of msg sizes in bytes in a string like "100 1000 10000 100000"

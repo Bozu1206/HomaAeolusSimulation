@@ -58,11 +58,13 @@ class WorkloadSynthesizer : public cSimpleModule
     cXMLElement* xmlConfig;
     uint32_t nicLinkSpeed; // in Gb/s
     uint32_t fabricLinkSpeed;
+
     double fabricLinkDelay;
     double edgeLinkDelay;
     double hostSwTurnAroundTime;
     double hostNicSxThinkTime;
     double switchFixDelay;
+    
     bool isFabricCutThrough;
     bool isSingleSpeedFabric;
     int parentHostIdx;

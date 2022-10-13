@@ -129,14 +129,13 @@ HomaTransport::registerTemplatedStats()
 void
 HomaTransport::initialize()
 {
-    //std::cout << "HomaTransport::initialize() invoked." << std::endl;
+    std::cout << "HomaTransport::initialize() invoked." << std::endl;
     // Read in config parameters for HomaTransport from config files and store
     // the parameters in a depot container.
     homaConfig = new HomaConfigDepot(this);
-    //std::cout << homaConfig->destPort << std::endl;
-
-    //std::cout << "transport ptr " << static_cast<void*>(homaConfig) <<
-    //    std::endl;
+    std::cout << homaConfig->destPort << std::endl;
+    
+    std::cout << "transport ptr " << static_cast<void*>(homaConfig) << std::endl;
     // If grantMaxBytes is given too large in the config file, we should correct
     // for it.
     HomaPkt dataPkt = HomaPkt();
@@ -147,26 +146,48 @@ HomaTransport::initialize()
         homaConfig->grantMaxBytes = maxDataBytes;
     }
 
+    std::cout << "grandMaxBytes is " << homaConfig->grantMaxBytes << endl; 
+
     // Setting up the timer objects associated with this transport.
     sendTimer = new cMessage("SendTimer");
     emitSignalTimer = new cMessage("SignalEmitionTimer");
     nextEmitSignalTime = SIMTIME_ZERO;
 
     registerTemplatedStats();
+
+    std::cout << "Starting the init of WS" << endl;
+
+    /**
+     * This class observes the packets in both receiving and sending path and
+     * creates an estimate of the workload characteristics (Average load factor and
+     * size distribution.). This class can also receive an explicit workload type
+     * as used by the MsgSizeDistributions for comparison purpose.
+     */
     distEstimator = new WorkloadEstimator(homaConfig);
-    prioResolver = new PriorityResolver(homaConfig, distEstimator);
-    rxScheduler.initialize(homaConfig, prioResolver);
+
+    /**
+     * Creates a priority resolver. Assign priorities to packet.
+    */
+    prioResolver  = new PriorityResolver(homaConfig, distEstimator);
+
+
+    // SendController initialization
     sxController.initSendController(homaConfig, prioResolver);
+
+    // ReceiveScheduler initialization 
+    rxScheduler.initialize(homaConfig, prioResolver);
+    
+    
     outstandingGrantBytes = 0;
 
     // set sendTimer state to START and schedule the timer at the simulation
-    // start-time. When this timer fires, the rest of intializations steps will
-    // be done ( ie. those step that are needed to be done after simulation
+    // start-time. When this timer fires, the rest of initializations steps will
+    // be done (ie. those step that are needed to be done after simulation
     // setup is complete.)
     sendTimer->setKind(SelfMsgKind::START);
     scheduleAt(simTime(), sendTimer);
-    //std::cout << "transport ptr " << static_cast<void*>(homaConfig) <<
-    //    std::endl;
+    std::cout << "transport ptr " << static_cast<void*>(homaConfig) << std::endl;
+    std::cout << "End of init of HT" << endl; 
 }
 
 /**
@@ -177,10 +198,17 @@ HomaTransport::initialize()
 void
 HomaTransport::processStart()
 {
-    //std::cout << "processStart() init called" << std::endl;
+    std::cout << "========================================================" << endl;
+    std::cout << "Calling processStart() for module : " << getFullName() << "" << endl;
+    std::cout << "=======================================================" << endl;
     // initialized udp socket
     socket.setOutputGate(gate("udpOut"));
     socket.bind(homaConfig->localPort);
+
+    //cMessage* msg = new cMessage("Test"); 
+    //std::cout << "Sending message : test" << endl;  
+    //send(msg, "udpOut");
+    
     sendTimer->setKind(SelfMsgKind::SEND);
     emitSignalTimer->setKind(SelfMsgKind::EMITTER);
     scheduleAt(simTime(), emitSignalTimer);
@@ -236,18 +264,26 @@ HomaTransport::testAndEmitStabilitySignal()
 void
 HomaTransport::handleMessage(cMessage *msg)
 {
-    Enter_Method_Silent();
+    //Enter_Method_Silent();
+    
+    
+    
     if (msg->isSelfMessage()) {
         switch (msg->getKind()) {
             case SelfMsgKind::START:
+                std::cout << "Handling START message "<< endl; 
                 processStart();
                 break;
             case SelfMsgKind::GRANT:
+                std::cout << "Handling GRANT message "<< endl; 
                 rxScheduler.processGrantTimers(msg);
                 break;
             case SelfMsgKind::SEND:
+                std::cout << "Handling SEND message "<< endl; 
                 ASSERT(msg == sendTimer);
+
                 sxController.handlePktTransmitEnd();
+
                 sxController.sendOrQueue(msg);
                 break;
             case SelfMsgKind::EMITTER:
@@ -302,8 +338,9 @@ HomaTransport::handleRecvdPkt(cPacket* pkt)
 
     uint32_t pktLenOnWire = HomaPkt::getBytesOnWire(rxPkt->getDataBytes(),
         (PktType)rxPkt->getPktType());
-    simtime_t pktDuration =
-        SimTime(1e-9 * (pktLenOnWire * 8.0 / homaConfig->nicLinkSpeed));
+    //simtime_t pktDuration =
+       // SimTime(1e-9 * (pktLenOnWire * 8.0 / homaConfig->nicLinkSpeed));
+    simtime_t pktDuration = 0.1;
 
     // update active period stats
     if (rxScheduler.getInflightBytes() == 0) {
@@ -336,7 +373,7 @@ HomaTransport::handleRecvdPkt(cPacket* pkt)
     // wasted bandwidth.
     if (rxScheduler.getInflightBytes() == 0) {
         // This is end of a active period, so we should dump the stats and reset
-        // varibles that track next active period.
+        // variables that track next active period.
         emit(rxActiveTimeSignal, simTime() - rxScheduler.activePeriodStart);
         emit(rxActiveBytesSignal, rxScheduler.rcvdBytesPerActivePeriod);
         rxScheduler.rcvdBytesPerActivePeriod = 0;
@@ -384,7 +421,7 @@ HomaTransport::SendController::SendController(HomaTransport* transport)
 
 /**
  * Initializing the SendController after the simulation network is setup. This
- * function is to be called by HomaTransport::intialize() method.
+ * function is to be called by HomaTransport::initialize() method.
  *
  * \param homaConfig
  *      Homa config container that keeps user specified parameters for the
@@ -435,42 +472,56 @@ HomaTransport::SendController::handlePktTransmitEnd()
     // delay in transmitting the other packets. Here we collect the statistics
     // related those trasmssion delays.
     uint32_t lastDestAddr = sentPkt.getDestAddr().toIPv4().getInt();
-    for (auto it = rxAddrMsgMap.begin(); it != rxAddrMsgMap.end(); ++it) {
+
+    std::cout << "Last destination address is : " 
+              << sentPkt.getDestAddr().toIPv4().str() << endl;
+
+    // Parcours tous les outbounds message to send 
+    for (auto it = rxAddrMsgMap.begin(); it != rxAddrMsgMap.end(); ++it) 
+    {
         uint32_t rxAddr = it->first;
-        if (rxAddr != lastDestAddr) {
+
+        // Sending to a new host (not the last one) 
+        if (rxAddr != lastDestAddr) 
+        {
             auto allMsgToRxAddr = it->second;
             uint64_t totalTrailingUnsched = 0;
             simtime_t oldestSchedPkt = simTime();
             simtime_t currentTime = simTime();
             for (auto itt = allMsgToRxAddr.begin();
-                    itt != allMsgToRxAddr.end(); ++itt) {
+                      itt != allMsgToRxAddr.end(); ++itt) 
+            {
                 OutboundMessage* msg = *itt;
                 if (msg->msgSize > msg->bytesLeft) {
                     // Unsched delay at sender may waste rx bw only if msg has
                     // already sent at least one request packet.
                     totalTrailingUnsched += msg->unschedBytesLeft;
                 }
+
+
                 auto& schedPkts = msg->getTxSchedPkts();
                 // Find oldest sched pkt creation time
                 for (auto ittt = schedPkts.begin(); ittt != schedPkts.end();
                         ++ittt) {
                     simtime_t pktCreationTime = (*ittt)->getCreationTime();
-                    oldestSchedPkt = (pktCreationTime < oldestSchedPkt
-                        ? pktCreationTime : oldestSchedPkt);
+                    oldestSchedPkt = 
+                        (pktCreationTime < oldestSchedPkt ? pktCreationTime : oldestSchedPkt);
                 }
             }
 
             simtime_t transmitDelay;
-            if (totalTrailingUnsched > 0) {
-                simtime_t totalUnschedTxTimeLeft = SimTime(1e-9 * (
+            if (totalTrailingUnsched > 0) 
+            {
+                simtime_t totalUnschedTxTimeLeft = SimTime(1e-9 *(
                     HomaPkt::getBytesOnWire(totalTrailingUnsched,
                     PktType::UNSCHED_DATA) * 8.0 / homaConfig->nicLinkSpeed));
                 transmitDelay = sentPktDuration < totalUnschedTxTimeLeft
-                    ? sentPktDuration : totalUnschedTxTimeLeft;
+                              ? sentPktDuration : totalUnschedTxTimeLeft;
                 transport->emit(sxUnschedPktDelaySignal, transmitDelay);
             }
 
-            if (oldestSchedPkt != currentTime) {
+            if (oldestSchedPkt != currentTime) 
+            {
                 transmitDelay =
                     sentPktDuration < currentTime - oldestSchedPkt
                     ? sentPktDuration : currentTime - oldestSchedPkt;
@@ -494,30 +545,44 @@ HomaTransport::SendController::processSendMsgFromApp(AppMessage* sendMsg)
     transport->emit(bytesLeftToSendSignal, bytesLeftToSend);
     transport->emit(bytesNeedGrantSignal, bytesNeedGrant);
     uint32_t destAddr = sendMsg->getDestAddr().toIPv4().getInt();
+
+    std::cout << "\n HT::SC::processSendMsgFromApp: \n \t" 
+              << "dest addr =" << sendMsg->getDestAddr().toIPv4().str() << "\n" << endl; 
+
     uint32_t msgSize = sendMsg->getByteLength();
+    
+    std::cout << "\n HT::SC::processSendMsgFromApp: \n \t" 
+              << "msgSize : " << msgSize << "\n" << endl; 
+
     std::vector<uint16_t> reqUnschedDataVec =
         unschedByteAllocator->getReqUnschedDataPkts(destAddr, msgSize);
 
     outboundMsgMap.emplace(std::piecewise_construct,
-            std::forward_as_tuple(msgId),
-            std::forward_as_tuple(sendMsg, this, msgId, reqUnschedDataVec));
+                           std::forward_as_tuple(msgId),
+                std::forward_as_tuple(sendMsg, this, msgId, reqUnschedDataVec));
+
     OutboundMessage* outboundMsg = &(outboundMsgMap.at(msgId));
     rxAddrMsgMap[destAddr].insert(outboundMsg);
 
-    if (bytesLeftToSend == 0) {
+    if (bytesLeftToSend == 0) 
+    {
         // We have just entered in an active transmit period.
         activePeriodStart = simTime();
         ASSERT(sentBytesPerActivePeriod == 0);
         sentBytesPerActivePeriod = 0;
     }
+    
     bytesLeftToSend += outboundMsg->getBytesLeft();
+    
     transport->testAndEmitStabilitySignal();
     outboundMsg->prepareRequestAndUnsched();
     auto insResult = outbndMsgSet.insert(outboundMsg);
+    
     ASSERT(insResult.second); // check insertion took place
     bytesNeedGrant += outboundMsg->bytesToSched;
     msgId++;
-    delete sendMsg;
+    
+    delete sendMsg; // DELETE THE APP MESSAGE (!)
     sendOrQueue();
 }
 
@@ -531,7 +596,7 @@ HomaTransport::SendController::processSendMsgFromApp(AppMessage* sendMsg)
 void
 HomaTransport::SendController::processReceivedGrant(HomaPkt* rxPkt)
 {
-    EV << "Received a grant from " << rxPkt->getSrcAddr().str()
+    std::cout << "Received a grant from " << rxPkt->getSrcAddr().str()
             << " for  msgId " << rxPkt->getMsgId() << " for "
             << rxPkt->getGrantFields().grantBytes << "  Bytes." << endl;
 
@@ -568,21 +633,28 @@ HomaTransport::SendController::processReceivedGrant(HomaPkt* rxPkt)
  * over the data packets.
  *
  * \param msg
- *      Any of the three cases: 1. a grant packet to be transmitted out to the
- *      network. 2. The send timer that signals the NIC tx link has gone idle
- *      and we should send next ready packet.  3. NULL if a data packet has
- *      become ready and buffered in the HomaTransport::SendController queue and
- *      we want to check if we can send the packet immediately in case tx link
- *      is idle.
+ *      Any of the three cases: 
+ *          1. a GRANT packet to be transmitted out to the network. 
+ * 
+ *          2. The send timer that signals the NIC tx link has gone 
+ *             idle and we should send next ready packet.  
+ * 
+ *          3. NULL if a data packet has become ready and buffered in the 
+ *             HomaTransport::SendController queue and we want to check if 
+ *             we can send the packet immediately in case tx link is idle.
  */
 void
 HomaTransport::SendController::sendOrQueue(cMessage* msg)
 {
     HomaPkt* sxPkt = NULL;
-    if (msg == transport->sendTimer) {
+
+    if (msg == transport->sendTimer) 
+    {
         // Send timer fired and it's time to check if we can send a data packet.
         ASSERT(msg->getKind() == SelfMsgKind::SEND);
-        if (!outGrantQueue.empty()) {
+        
+        if (!outGrantQueue.empty()) 
+        {
             // send queued grant packets if there is any.
             sxPkt = outGrantQueue.top();
             outGrantQueue.pop();
@@ -590,24 +662,31 @@ HomaTransport::SendController::sendOrQueue(cMessage* msg)
             return;
         }
 
-        if (!outbndMsgSet.empty()) {
+        if (!outbndMsgSet.empty()) 
+        {
             OutboundMessage* highPrioMsg = *(outbndMsgSet.begin());
             size_t numRemoved =  outbndMsgSet.erase(highPrioMsg);
             ASSERT(numRemoved == 1); // check only one msg is removed
+
             bool hasMoreReadyPkt = highPrioMsg->getTransmitReadyPkt(&sxPkt);
+
             sendPktAndScheduleNext(sxPkt);
-            if (highPrioMsg->getBytesLeft() <= 0) {
+
+            if (highPrioMsg->getBytesLeft() <= 0) 
+            {
                 ASSERT(!hasMoreReadyPkt);
                 msgTransmitComplete(highPrioMsg);
                 return;
             }
 
-            if (hasMoreReadyPkt) {
+            if (hasMoreReadyPkt) 
+            {
                 auto insResult = outbndMsgSet.insert(highPrioMsg);
                 ASSERT(insResult.second); // check insertion took place
                 return;
             }
         }
+
         return;
     }
 
@@ -617,7 +696,7 @@ HomaTransport::SendController::sendOrQueue(cMessage* msg)
         ASSERT(sxPkt->getPktType() == PktType::GRANT);
         if (transport->sendTimer->isScheduled()) {
             // NIC tx link is busy sending another packet
-            EV << "Grant timer is scheduled! Grant to " <<
+            std::cout << "Grant timer is scheduled! Grant to " <<
                 sxPkt->getDestAddr().toIPv4().str() << ", mesgId: "  <<
                 sxPkt->getMsgId() << " is queued!"<< endl;
 
@@ -625,7 +704,7 @@ HomaTransport::SendController::sendOrQueue(cMessage* msg)
             return;
         } else {
             ASSERT(outGrantQueue.empty());
-            EV << "Send grant to: " << sxPkt->getDestAddr().toIPv4().str()
+            std::cout << "Send grant to: " << sxPkt->getDestAddr().toIPv4().str()
                 << ", mesgId: "  << sxPkt->getMsgId() << ", prio: " <<
                 sxPkt->getGrantFields().schedPrio<< endl;
             sendPktAndScheduleNext(sxPkt);
@@ -643,6 +722,7 @@ HomaTransport::SendController::sendOrQueue(cMessage* msg)
     ASSERT(outGrantQueue.empty() && outbndMsgSet.size() == 1);
     OutboundMessage* highPrioMsg = *(outbndMsgSet.begin());
     size_t numRemoved =  outbndMsgSet.erase(highPrioMsg);
+
     ASSERT(numRemoved == 1); // check that the message is removed
     bool hasMoreReadyPkt = highPrioMsg->getTransmitReadyPkt(&sxPkt);
     sendPktAndScheduleNext(sxPkt);
@@ -652,7 +732,8 @@ HomaTransport::SendController::sendOrQueue(cMessage* msg)
         return;
     }
 
-    if (hasMoreReadyPkt) {
+    if (hasMoreReadyPkt) 
+    {
         auto insResult = outbndMsgSet.insert(highPrioMsg);
         ASSERT(insResult.second); // check insertion took place
         return;
@@ -672,9 +753,10 @@ HomaTransport::SendController::sendPktAndScheduleNext(HomaPkt* sxPkt)
     PktType pktType = (PktType)sxPkt->getPktType();
     uint32_t numDataBytes = sxPkt->getDataBytes();
     uint32_t bytesSentOnWire = HomaPkt::getBytesOnWire(numDataBytes, pktType);
+
     simtime_t currentTime = simTime();
     simtime_t sxPktDuration =  SimTime(1e-9 * (bytesSentOnWire * 8.0 /
-        homaConfig->nicLinkSpeed));
+                                               homaConfig->nicLinkSpeed));
 
     switch(pktType)
     {
@@ -1173,26 +1255,41 @@ HomaTransport::ReceiveScheduler::initialize(HomaConfigDepot* homaConfig,
     PriorityResolver* prioResolver)
 {
     this->homaConfig = homaConfig;
-    this->unschRateComp = new UnschedRateComputer(homaConfig,
-        homaConfig->useUnschRateInScheduler, 0.1);
+    this->unschRateComp = 
+                new UnschedRateComputer(homaConfig, homaConfig->useUnschRateInScheduler, 0.1);
     this->schedSenders = new SchedSenders(homaConfig, transport, this);
+
+    /**
+     * These variables track outstanding bytes (ie. not yet arrived bytes) 
+     * that the receiver knows they must arrive in the future.
+    */
     inflightUnschedPerPrio.resize(this->homaConfig->allPrio);
     inflightSchedPerPrio.resize(this->homaConfig->allPrio);
+
+    /**
+     * Collects stats
+    */
     bytesRecvdPerPrio.resize(homaConfig->allPrio);
     scheduledBytesPerPrio.resize(homaConfig->allPrio);
     unschedToRecvPerPrio.resize(homaConfig->allPrio);
+
     std::fill(inflightUnschedPerPrio.begin(), inflightUnschedPerPrio.end(), 0);
     std::fill(inflightSchedPerPrio.begin(), inflightSchedPerPrio.end(), 0);
     std::fill(bytesRecvdPerPrio.begin(), bytesRecvdPerPrio.end(), 0);
     std::fill(scheduledBytesPerPrio.begin(), scheduledBytesPerPrio.end(), 0);
     std::fill(unschedToRecvPerPrio.begin(), unschedToRecvPerPrio.end(), 0);
+
     schedBwUtilTimer = new cMessage("bwUtilChecker");
     schedBwUtilTimer->setKind(SelfMsgKind::BW_CHECK);
-    if (homaConfig->linkCheckBytes < 0) {
+    
+    if (homaConfig->linkCheckBytes < 0) 
+    {
         bwCheckInterval = SimTime::getMaxTime();
-    } else {
-        bwCheckInterval = SimTime(homaConfig->linkCheckBytes * 8.0 /
-            (homaConfig->nicLinkSpeed * 1e9));
+    } 
+    else 
+    {
+        bwCheckInterval = 
+            SimTime(homaConfig->linkCheckBytes * 8.0 / (homaConfig->nicLinkSpeed * 1e9));
     }
 }
 
@@ -1216,6 +1313,7 @@ HomaTransport::ReceiveScheduler::~ReceiveScheduler()
         }
         delete s;
     }
+
     delete unschRateComp;
     delete schedSenders;
     transport->cancelAndDelete(schedBwUtilTimer);
@@ -2730,19 +2828,23 @@ HomaTransport::InboundMessage::prepareGrant(uint16_t grantSize,
     // prepare a grant
     HomaPkt* grantPkt = new HomaPkt(rxScheduler->transport);
     grantPkt->setPktType(PktType::GRANT);
+    
     GrantFields grantFields;
     grantFields.offset = offset;
     grantFields.grantBytes = grantSize;
     grantFields.schedPrio = schedPrio;
+
     grantPkt->setGrantFields(grantFields);
     grantPkt->setDestAddr(this->srcAddr);
     grantPkt->setSrcAddr(this->destAddr);
     grantPkt->setMsgId(this->msgIdAtSender);
     grantPkt->setByteLength(grantPkt->headerSize());
+    // grant packets always have highest priority
     grantPkt->setPriority(0);
 
     int grantedBytesOnWire = HomaPkt::getBytesOnWire(grantSize,
         PktType::SCHED_DATA);
+
     rxScheduler->transport->outstandingGrantBytes += grantedBytesOnWire;
 
     // update internal structure
@@ -2772,10 +2874,13 @@ AppMessage*
 HomaTransport::InboundMessage::prepareRxMsgForApp()
 {
     AppMessage* rxMsg = new AppMessage();
+
     rxMsg->setDestAddr(this->destAddr);
     rxMsg->setSrcAddr(this->srcAddr);
     rxMsg->setByteLength(this->msgSize);
+    
     rxMsg->setMsgCreationTime(this->msgCreationTime);
+    
     rxMsg->setMsgBytesOnWire(this->totalBytesOnWire);
 
     // calculate scheduling delay
