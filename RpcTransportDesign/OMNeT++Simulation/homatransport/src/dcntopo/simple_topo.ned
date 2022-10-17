@@ -77,14 +77,14 @@ network SimpleNetwork
 
         // Set input and output hooks in NICs to "Lagger" type and set the delayPar to
         // hostSwTurnAroundTime
-        // **.eth[*].numInputHooks = 1;
-        // **.eth[*].inputHook[*].typename = "Lagger";
-        // **.eth[*].inputHook[*].hookType = "InputHook";
-        // host[*].eth[*].inputHook[*].delayPar = convertUnit(hostSwTurnAroundTime, "s");
-        // **.eth[*].numOutputHooks = 1;
-        // **.eth[*].outputHook[*].typename = "Lagger";
-        // **.eth[*].outputHook[*].hookType = "OutputHook";
-        // host[*].eth[*].outputHook[*].delayPar = convertUnit(hostSwTurnAroundTime, "s");
+        **.eth[*].numInputHooks = 1;
+        **.eth[*].inputHook[*].typename = "Lagger";
+        **.eth[*].inputHook[*].hookType = "InputHook";
+        host[*].eth[*].inputHook[*].delayPar = convertUnit(hostSwTurnAroundTime, "s");
+        **.eth[*].numOutputHooks = 1;
+        **.eth[*].outputHook[*].typename = "Lagger";
+        **.eth[*].outputHook[*].hookType = "OutputHook";
+        host[*].eth[*].outputHook[*].delayPar = convertUnit(hostSwTurnAroundTime, "s");
 
     types:
         channel FabricChannel extends DatarateChannel
@@ -111,7 +111,7 @@ network SimpleNetwork
 
         host[numHosts]: HostBase {
             @display("i=device/server2;p=141,115");
-            hostConfig = xmldoc("config.xml", "/topologyConfig/hostConfig[@id=$MODULE_INDEX]");
+            hostConfig = xmldoc("simple_config.xml", "/topologyConfig/hostConfig[@id=$MODULE_INDEX]");
             nicLinkSpeed = nicLinkSpeed;
             fabricLinkSpeed = fabricLinkSpeed;
             edgeLinkDelay = edgeLinkDelay;
@@ -125,7 +125,7 @@ network SimpleNetwork
 
         configurator: IPv4NetworkConfigurator {
             parameters:
-                config = xmldoc("config.xml", "/topologyConfig/IPv4Configurator/config");
+                config = xmldoc("simple_config.xml", "/topologyConfig/IPv4Configurator/config");
                 @display("p=46,38");
         }
 

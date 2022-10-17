@@ -10,8 +10,8 @@
 
     <IPv4Configurator>
         <config>
-            <interface hosts='**.host[0..1]' address='10.0.0.x' netmask='255.x.x.x'/>
-            <interface hosts='**' address='10.x.x.x' netmask='255.x.x.x'/>
+            <interface hosts='**.host[0..2]' address='128.128.128.x' netmask='255.x.x.x'/>
+            <interface hosts='**' address='199.200.201.x' netmask='255.x.x.x'/>
         </config>
     </IPv4Configurator>
 
@@ -35,9 +35,19 @@
         </transportConfig>
         <appConfig>
             <isSender>false</isSender>
-            <destIds>0</destIds>
+            <destIds></destIds>
         </appConfig>
     </hostConfig>
+
+    <hostConfig id="2">
+        <transportConfig>
+        </transportConfig>
+        <appConfig>
+            <isSender>false</isSender>
+            <destIds></destIds>
+        </appConfig>
+    </hostConfig>
+
 
 
 

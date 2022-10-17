@@ -47,6 +47,7 @@ void DropTailQueue::initialize()
 
     // configuration
     frameCapacity = par("frameCapacity");
+    EV_INFO << "FRAME CAPACITY : " << frameCapacity << endl; 
 
     mac = getNextMacLayer();
     if (!mac) {
@@ -57,13 +58,14 @@ void DropTailQueue::initialize()
 
 cMessage *DropTailQueue::enqueue(cMessage *msg)
 {
+    EV << "\n \n === Enqueuing packet === \n \n";
     double txRate = 0.0; // transmit speed of the next mac layer 
     if (mac) {
         txRate = dynamic_cast<EtherMACBase*>(mac)->getTxRate();
     }
 
     if (frameCapacity && queue.length() >= frameCapacity) {
-        EV << "Queue full, dropping packet.\n";
+        EV << "\t >>> Queue full, dropping packet.\n";
         return msg;
     }
 
@@ -78,7 +80,7 @@ cMessage *DropTailQueue::enqueue(cMessage *msg)
         pktOnWire = 1;
     }
 
-    if (queue.length() == 0 && pktOnWire == 0) {
+    if (frameCapacity && queue.length() == 0 && pktOnWire == 0) {
             queueEmpty++;
     } else if ((queue.length() == 0 && pktOnWire == 1) 
             || (queue.length() == 1 && pktOnWire == 0)) {
@@ -95,25 +97,27 @@ cMessage *DropTailQueue::enqueue(cMessage *msg)
     emit(queueLengthSignal, queue.length() + pktOnWire);
     emit(queueByteLengthSignal, queue.getByteLength() + (txPktBitsRemained >> 3));
     cPacket* pkt = check_and_cast<cPacket*>(msg);
+    
     queue.insert(pkt);
 
-    //emit(queueLengthSignal, queue.length());
-    //emit(queueByteLengthSignal, queue.getByteLength());
+    emit(queueLengthSignal, queue.length());
+    emit(queueByteLengthSignal, queue.getByteLength());
     return NULL;
 }
 
 cMessage *DropTailQueue::dequeue()
 {
+    EV_INFO << "\n \n === Dequeuing packet (" << getFullName() << ") === \n \n";
     if (queue.empty())
         return NULL;
 
     cPacket* pkt = queue.pop();
 
     // statistics
-    //emit(queueLengthSignal, queue.length());
-    //emit(queueByteLengthSignal, queue.getByteLength());
+    emit(queueLengthSignal, queue.length());
+    emit(queueByteLengthSignal, queue.getByteLength());
 
-    return (cMessage *)pkt;
+    return (cMessage *) pkt;
 }
 
 void DropTailQueue::sendOut(cMessage *msg)

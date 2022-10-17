@@ -161,7 +161,7 @@ WorkloadSynthesizer::initialize()
     const char* workLoadType = par("workloadType").stringValue();
     MsgSizeDistributions::DistributionChoice distSelector;
     std::string distFileName;
-    std::cout << workLoadType << endl; 
+    //std::cout << workLoadType << endl; 
     if (strcmp(workLoadType, "DCTCP") == 0) {
         distSelector = MsgSizeDistributions::DistributionChoice::DCTCP;
         distFileName = std::string(
@@ -263,7 +263,7 @@ WorkloadSynthesizer::initialize()
 
 
     if (distSelector == MsgSizeDistributions::DistributionChoice::SIMPLE_WORKLOAD) {
-                std::cout << "The test is working" << endl;
+                //std::cout << "The test is working" << endl;
     }
 
     //double avgRate = par("loadFactor").doubleValue() * nicLinkSpeed;
@@ -405,11 +405,21 @@ void
 WorkloadSynthesizer::sendMsg()
 {
     inet::L3Address destAddrs;
-    if (nextDestHostId == -1) {
+    // std::cout << "WS::sendMsg >> \n \t isSender : "
+    //           << isSender 
+    //           << "\n \t id : "
+    //           << getId()
+    //           << endl; 
+
+    if (nextDestHostId == -1) 
+    {
         destAddrs = chooseDestAddr();
-    } else {
+    } else 
+    {
         destAddrs = hostIdAddrMap[nextDestHostId];
     }
+
+
     char msgName[100];
     sprintf(msgName, "WorkloadSynthesizerMsg-%d ", numSent);
 
@@ -423,8 +433,7 @@ WorkloadSynthesizer::sendMsg()
     
     emit(sentMsgSignal, appMessage);
 
-    std::cout << "WS::sendMsg : \n \t send message : " 
-              << msgName << "from App to Transport" << endl; 
+    
 
     send(appMessage, "transportOut");
     numSent++;
@@ -436,9 +445,9 @@ WorkloadSynthesizer::processStart()
     // set srcAddress. The assumption here is that each host has only one
     // non-loopback interface and the IP of that interface is srcAddress.
 
-    std::cout << "========================================================" << endl;
-    std::cout << "Calling processStart() for module : " << getFullName() << "" << endl;
-    std::cout << "=======================================================" << endl;
+    // std::cout << "========================================================" << endl;
+    // std::cout << "Calling processStart() for module : " << getFullName() << "" << endl;
+    // std::cout << "=======================================================" << endl;
 
 
     inet::InterfaceTable* ifaceTable =
@@ -467,7 +476,17 @@ WorkloadSynthesizer::processStart()
     // If this app is not sender or is a sender but no receiver is available for
     // this sender, then just set the sendTimer to the stopTime and only wait
     // for message arrivals.
-    if (!isSender || destAddresses.empty()) {
+    
+    
+    if (getId() != 53) 
+    {
+        EV_DEBUG << getId();
+        //std::cout << "Setting isSender to false" << endl;  
+        isSender = false;
+    }
+
+    if (!isSender || destAddresses.empty()) 
+    {
         selfMsg->setKind(STOP);
         scheduleAt(stopTime, selfMsg);
         return;
@@ -479,13 +498,13 @@ WorkloadSynthesizer::processStart()
 
 void
 WorkloadSynthesizer::processStop() {
-    std::cout << "WS::processStop: \n \t Stopping" << endl;
+    //std::cout << "WS::processStop: \n \t Stopping" << endl;
 }
 
 void
 WorkloadSynthesizer::processSend()
 {
-    std::cout << "WS::processSend : \n \t calling sendMsg()..." << endl; 
+    //std::cout << "WS::processSend : \n \t calling sendMsg()..." << endl; 
     sendMsg();
     setupNextSend();
 }
@@ -499,10 +518,10 @@ WorkloadSynthesizer::setupNextSend()
     
     simtime_t nextSendTime = nextSendInterval + simTime();
     
-    std::cout  << "WS::setupNextSend : \n \t sendMsgSize = " << sendMsgSize 
-               << "\n \t nextDestHostId : " << nextDestHostId 
-               << "\n \t nextSendInterval : " << nextSendInterval 
-               << "\n \t nextSendTime : " << nextSendTime << endl; 
+    // std::cout  << "WS::setupNextSend : \n \t sendMsgSize = " << sendMsgSize 
+    //            << "\n \t nextDestHostId : " << nextDestHostId 
+    //            << "\n \t nextSendInterval : " << nextSendInterval 
+    //            << "\n \t nextSendTime : " << nextSendTime << endl; 
 
     if (sendMsgSize < 0 || nextSendTime > stopTime) 
     {
@@ -518,7 +537,7 @@ WorkloadSynthesizer::setupNextSend()
 void
 WorkloadSynthesizer::processRcvdMsg(cPacket* msg)
 {
-    EV_INFO << "Enter WS::processRcvdMsg function" << endl;
+    //std::cout << "Enter WS::processRcvdMsg function" << endl;
     AppMessage* rcvdMsg = check_and_cast<AppMessage*>(msg);
     emit(rcvdMsgSignal, rcvdMsg);
     simtime_t completionTime = simTime() - rcvdMsg->getMsgCreationTime();
@@ -574,13 +593,13 @@ WorkloadSynthesizer::processRcvdMsg(cPacket* msg)
     emit(mesgStatsSignal, &mesgStats);
 
     delete rcvdMsg;
-    EV_INFO << "Number received = " << numReceived << endl;
+    //std::cout << "Number received = " << numReceived << endl;
     numReceived++;
 
-//    if (numReceived >= 5)
-//    {
-//        processStop();
-//    }
+   if (numReceived >= 1)
+   {
+        processStop();    
+   }
 
 }
 

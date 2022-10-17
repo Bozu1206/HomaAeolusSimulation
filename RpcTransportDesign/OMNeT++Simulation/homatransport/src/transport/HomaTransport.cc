@@ -88,7 +88,7 @@ HomaTransport::HomaTransport()
  */
 HomaTransport::~HomaTransport()
 {
-    //std::cout << "destructor called" << std::endl;
+    ////std::cout << "destructor called" << std::endl;
     delete prioResolver;
     delete distEstimator;
     delete homaConfig;
@@ -129,13 +129,13 @@ HomaTransport::registerTemplatedStats()
 void
 HomaTransport::initialize()
 {
-    std::cout << "HomaTransport::initialize() invoked." << std::endl;
+    //std::cout << "HomaTransport::initialize() invoked." << std::endl;
     // Read in config parameters for HomaTransport from config files and store
     // the parameters in a depot container.
     homaConfig = new HomaConfigDepot(this);
-    std::cout << homaConfig->destPort << std::endl;
+    //std::cout << homaConfig->destPort << std::endl;
     
-    std::cout << "transport ptr " << static_cast<void*>(homaConfig) << std::endl;
+    //std::cout << "transport ptr " << static_cast<void*>(homaConfig) << std::endl;
     // If grantMaxBytes is given too large in the config file, we should correct
     // for it.
     HomaPkt dataPkt = HomaPkt();
@@ -146,7 +146,7 @@ HomaTransport::initialize()
         homaConfig->grantMaxBytes = maxDataBytes;
     }
 
-    std::cout << "grandMaxBytes is " << homaConfig->grantMaxBytes << endl; 
+    //std::cout << "grandMaxBytes is " << homaConfig->grantMaxBytes << endl; 
 
     // Setting up the timer objects associated with this transport.
     sendTimer = new cMessage("SendTimer");
@@ -155,7 +155,7 @@ HomaTransport::initialize()
 
     registerTemplatedStats();
 
-    std::cout << "Starting the init of WS" << endl;
+    //std::cout << "Starting the init of WS" << endl;
 
     /**
      * This class observes the packets in both receiving and sending path and
@@ -186,8 +186,8 @@ HomaTransport::initialize()
     // setup is complete.)
     sendTimer->setKind(SelfMsgKind::START);
     scheduleAt(simTime(), sendTimer);
-    std::cout << "transport ptr " << static_cast<void*>(homaConfig) << std::endl;
-    std::cout << "End of init of HT" << endl; 
+    //std::cout << "transport ptr " << static_cast<void*>(homaConfig) << std::endl;
+    //std::cout << "End of init of HT" << endl; 
 }
 
 /**
@@ -198,15 +198,15 @@ HomaTransport::initialize()
 void
 HomaTransport::processStart()
 {
-    std::cout << "========================================================" << endl;
-    std::cout << "Calling processStart() for module : " << getFullName() << "" << endl;
-    std::cout << "=======================================================" << endl;
+    //std::cout << "========================================================" << endl;
+    //std::cout << "Calling processStart() for module : " << getFullName() << "" << endl;
+    //std::cout << "=======================================================" << endl;
     // initialized udp socket
     socket.setOutputGate(gate("udpOut"));
     socket.bind(homaConfig->localPort);
 
     //cMessage* msg = new cMessage("Test"); 
-    //std::cout << "Sending message : test" << endl;  
+    ////std::cout << "Sending message : test" << endl;  
     //send(msg, "udpOut");
     
     sendTimer->setKind(SelfMsgKind::SEND);
@@ -265,21 +265,18 @@ void
 HomaTransport::handleMessage(cMessage *msg)
 {
     //Enter_Method_Silent();
-    
-    
-    
     if (msg->isSelfMessage()) {
         switch (msg->getKind()) {
             case SelfMsgKind::START:
-                std::cout << "Handling START message "<< endl; 
+                //std::cout << "Handling START message "<< endl; 
                 processStart();
                 break;
             case SelfMsgKind::GRANT:
-                std::cout << "Handling GRANT message "<< endl; 
+                //std::cout << "Handling GRANT message "<< endl; 
                 rxScheduler.processGrantTimers(msg);
                 break;
             case SelfMsgKind::SEND:
-                std::cout << "Handling SEND message "<< endl; 
+                //std::cout << "Handling SEND message "<< endl; 
                 ASSERT(msg == sendTimer);
 
                 sxController.handlePktTransmitEnd();
@@ -325,6 +322,7 @@ HomaTransport::handleRecvdPkt(cPacket* pkt)
 {
     Enter_Method_Silent();
     HomaPkt* rxPkt = check_and_cast<HomaPkt*>(pkt);
+
     // check and set the localAddr
     if (localAddr == inet::L3Address()) {
         localAddr = rxPkt->getDestAddr();
@@ -359,7 +357,6 @@ HomaTransport::handleRecvdPkt(cPacket* pkt)
         case PktType::SCHED_DATA:
             rxScheduler.processReceivedPkt(rxPkt);
             break;
-
         case PktType::GRANT:
             sxController.processReceivedGrant(rxPkt);
             break;
@@ -473,8 +470,8 @@ HomaTransport::SendController::handlePktTransmitEnd()
     // related those trasmssion delays.
     uint32_t lastDestAddr = sentPkt.getDestAddr().toIPv4().getInt();
 
-    std::cout << "Last destination address is : " 
-              << sentPkt.getDestAddr().toIPv4().str() << endl;
+    //std::cout << "Last destination address is : " 
+    //          << sentPkt.getDestAddr().toIPv4().str() << endl;
 
     // Parcours tous les outbounds message to send 
     for (auto it = rxAddrMsgMap.begin(); it != rxAddrMsgMap.end(); ++it) 
@@ -546,13 +543,13 @@ HomaTransport::SendController::processSendMsgFromApp(AppMessage* sendMsg)
     transport->emit(bytesNeedGrantSignal, bytesNeedGrant);
     uint32_t destAddr = sendMsg->getDestAddr().toIPv4().getInt();
 
-    std::cout << "\n HT::SC::processSendMsgFromApp: \n \t" 
-              << "dest addr =" << sendMsg->getDestAddr().toIPv4().str() << "\n" << endl; 
+    //std::cout << "\n HT::SC::processSendMsgFromApp: \n \t" 
+    //          << "dest addr =" << sendMsg->getDestAddr().toIPv4().str() << "\n" << endl; 
 
     uint32_t msgSize = sendMsg->getByteLength();
     
-    std::cout << "\n HT::SC::processSendMsgFromApp: \n \t" 
-              << "msgSize : " << msgSize << "\n" << endl; 
+    //std::cout << "\n HT::SC::processSendMsgFromApp: \n \t" 
+    //          << "msgSize : " << msgSize << "\n" << endl; 
 
     std::vector<uint16_t> reqUnschedDataVec =
         unschedByteAllocator->getReqUnschedDataPkts(destAddr, msgSize);
@@ -596,9 +593,9 @@ HomaTransport::SendController::processSendMsgFromApp(AppMessage* sendMsg)
 void
 HomaTransport::SendController::processReceivedGrant(HomaPkt* rxPkt)
 {
-    std::cout << "Received a grant from " << rxPkt->getSrcAddr().str()
-            << " for  msgId " << rxPkt->getMsgId() << " for "
-            << rxPkt->getGrantFields().grantBytes << "  Bytes." << endl;
+    //std::cout << "Received a grant from " << rxPkt->getSrcAddr().str()
+    //        << " for  msgId " << rxPkt->getMsgId() << " for "
+    //        << rxPkt->getGrantFields().grantBytes << "  Bytes." << endl;
 
     sumGrantsInGap += HomaPkt::getBytesOnWire(rxPkt->getDataBytes(),
         (PktType)rxPkt->getPktType());
@@ -696,17 +693,17 @@ HomaTransport::SendController::sendOrQueue(cMessage* msg)
         ASSERT(sxPkt->getPktType() == PktType::GRANT);
         if (transport->sendTimer->isScheduled()) {
             // NIC tx link is busy sending another packet
-            std::cout << "Grant timer is scheduled! Grant to " <<
-                sxPkt->getDestAddr().toIPv4().str() << ", mesgId: "  <<
-                sxPkt->getMsgId() << " is queued!"<< endl;
+            //std::cout << "Grant timer is scheduled! Grant to " <<
+            //    sxPkt->getDestAddr().toIPv4().str() << ", mesgId: "  <<
+            //    sxPkt->getMsgId() << " is queued!"<< endl;
 
             outGrantQueue.push(sxPkt);
             return;
         } else {
             ASSERT(outGrantQueue.empty());
-            std::cout << "Send grant to: " << sxPkt->getDestAddr().toIPv4().str()
-                << ", mesgId: "  << sxPkt->getMsgId() << ", prio: " <<
-                sxPkt->getGrantFields().schedPrio<< endl;
+            //std::cout << "Send grant to: " << sxPkt->getDestAddr().toIPv4().str()
+            //    << ", mesgId: "  << sxPkt->getMsgId() << ", prio: " <<
+             //   sxPkt->getGrantFields().schedPrio<< endl;
             sendPktAndScheduleNext(sxPkt);
             return;
         }
@@ -1470,7 +1467,10 @@ HomaTransport::ReceiveScheduler::processReceivedPkt(HomaPkt* rxPkt)
         schedSenders->numSenders, s, 0);
     int sIndOld = schedSenders->remove(s);
     old.sInd = sIndOld;
-    EV << "\n\n#################New packet arrived################\n\n" << endl;
+
+
+
+    EV << "\n\n################ New packet arrived ###############\n\n" << endl;
 
     // process received packet
     auto msgCompHandle = s->handleInboundPkt(rxPkt);
@@ -1554,6 +1554,7 @@ HomaTransport::ReceiveScheduler::processReceivedPkt(HomaPkt* rxPkt)
         schedBwUtilTimer);
     EV << "scheduled schedBwUtilTimer at " <<
             schedBwUtilTimer->getArrivalTime() << endl;
+    
     return;
 }
 
@@ -1867,11 +1868,12 @@ HomaTransport::ReceiveScheduler::SenderState::handleInboundPkt(HomaPkt* rxPkt)
         // this message is complete, so send it to the application
         AppMessage* rxMsg = inboundMesg->prepareRxMsgForApp();
 
-#if TESTING
         delete rxMsg;
-#else
-        rxScheduler->transport->send(rxMsg, "appOut", 0);
-#endif
+// #if TESTING
+//         delete rxMsg;
+// #else
+//         rxScheduler->transport->send(rxMsg, "appOut", 0);
+// #endif
 
         // remove this message from the incompleteRxMsgs
         incompleteMesgs.erase(inboundMesg->msgIdAtSender);
@@ -2144,7 +2146,7 @@ HomaTransport::ReceiveScheduler::SchedSenders::insert(SenderState* s)
     headIdx = newHeadIdx;
     //uint64_t mesgSize = (*s->mesgsToGrant.begin())->msgSize;
     //uint64_t toGrant = (*s->mesgsToGrant.begin())->bytesToGrant;
-    //std::cout << (*s->mesgsToGrant.begin())->msgSize << ", "
+    ////std::cout << (*s->mesgsToGrant.begin())->msgSize << ", "
     //<<(*s->mesgsToGrant.begin())->bytesToGrant << std::endl;
     senders.insert(senders.begin()+insIdx, s);
     return;
@@ -2780,13 +2782,13 @@ HomaTransport::InboundMessage::fillinRxBytes(uint32_t byteStart,
     if (pktType == PktType::SCHED_DATA) {
         ASSERT(bytesReceived > 0);
         // update inflight grants list
-        //std::cout << "first byte: " << byteStart <<
+        ////std::cout << "first byte: " << byteStart <<
         //    ", last byte: " << byteEnd  << std::endl;
         GrantList::iterator grant;
         for (grant = inflightGrants.begin(); grant != inflightGrants.end();
                 grant++) {
 
-            //std::cout << "grant offset: " << std::get<0>(*grant) << std::endl;
+            ////std::cout << "grant offset: " << std::get<0>(*grant) << std::endl;
             if (std::get<0>(*grant) == byteStart) {
                 break;
             }
