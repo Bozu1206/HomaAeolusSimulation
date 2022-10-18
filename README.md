@@ -18,7 +18,7 @@ How to implement retransmission ?
 Using timers : one at sender side and one at receiver side. 
 
 Sender side : 
-	- When the app gives a message to the transport, bind a timer (a self message) to this message. If we receive back a GRANT delete the timer, else resend the message. 
+- When the app gives a message to the transport, bind a timer (a self message) to this message. If we receive back a GRANT delete the timer, else resend the message. 
 	
 Receiver side :
-	- Bind a timer to messages, in case of timeout prepare and send a RESEND packet to sender, else the timer will be canceled.
+- Bind a timer to messages, in case of timeout prepare and send a RESEND packet to sender, else the timer will be canceled.
