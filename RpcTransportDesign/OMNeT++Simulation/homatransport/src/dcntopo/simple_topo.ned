@@ -65,7 +65,7 @@ network SimpleNetwork
 
         int numHosts = numServersPerTor * numTors; // 2 * 1
 
-        // Set parameters to enablle random spray multipath routing
+        // Set parameters to enable random spray multipath routing
         tor[*].networkLayer.ip.numUpLinks = numAggSwitches;
         tor[*].networkLayer.ip.supportMultiPathRouting = true;
         aggRouter[*].networkLayer.ip.numUpLinks = 0;

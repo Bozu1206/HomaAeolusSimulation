@@ -433,8 +433,6 @@ WorkloadSynthesizer::sendMsg()
     
     emit(sentMsgSignal, appMessage);
 
-    
-
     send(appMessage, "transportOut");
     numSent++;
 }
@@ -478,7 +476,7 @@ WorkloadSynthesizer::processStart()
     // for message arrivals.
     
     
-    if (getId() != 53) 
+    if (getId() != 42) 
     {
         EV_DEBUG << getId();
         //std::cout << "Setting isSender to false" << endl;  
@@ -523,6 +521,11 @@ WorkloadSynthesizer::setupNextSend()
     //            << "\n \t nextSendInterval : " << nextSendInterval 
     //            << "\n \t nextSendTime : " << nextSendTime << endl; 
 
+    if (sendMsgSize < -10) 
+    {
+        EV_DETAIL << "Aborting simulation" << endl; 
+        endSimulation(); 
+    }
     if (sendMsgSize < 0 || nextSendTime > stopTime) 
     {
         selfMsg->setKind(STOP);
@@ -593,12 +596,13 @@ WorkloadSynthesizer::processRcvdMsg(cPacket* msg)
     emit(mesgStatsSignal, &mesgStats);
 
     delete rcvdMsg;
-    //std::cout << "Number received = " << numReceived << endl;
+    EV_INFO << "Number received = " << numReceived << endl;
     numReceived++;
 
    if (numReceived >= 1)
    {
-        processStop();    
+        EV_DEBUG << "Aborting simulation" << endl;
+        endSimulation();    
    }
 
 }

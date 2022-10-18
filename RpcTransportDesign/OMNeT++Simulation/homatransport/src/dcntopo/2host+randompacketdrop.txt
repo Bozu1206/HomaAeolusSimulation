@@ -1,0 +1,2396 @@
+cd src && make all
+make[1] : on entre dans le répertoire « /home/fran/Bureau/HomaAeolusSimulation/RpcTransportDesign/OMNeT++Simulation/inet/src »
+make[1] : on quitte le répertoire « /home/fran/Bureau/HomaAeolusSimulation/RpcTransportDesign/OMNeT++Simulation/inet/src »
+cd src && make
+make[1] : on entre dans le répertoire « /home/fran/Bureau/HomaAeolusSimulation/RpcTransportDesign/OMNeT++Simulation/homatransport/src »
+make[1] : on quitte le répertoire « /home/fran/Bureau/HomaAeolusSimulation/RpcTransportDesign/OMNeT++Simulation/homatransport/src »
+cd ../inet && make
+make[1] : on entre dans le répertoire « /home/fran/Bureau/HomaAeolusSimulation/RpcTransportDesign/OMNeT++Simulation/inet »
+cd src && make all
+make[2] : on entre dans le répertoire « /home/fran/Bureau/HomaAeolusSimulation/RpcTransportDesign/OMNeT++Simulation/inet/src »
+make[2] : on quitte le répertoire « /home/fran/Bureau/HomaAeolusSimulation/RpcTransportDesign/OMNeT++Simulation/inet/src »
+make[1] : on quitte le répertoire « /home/fran/Bureau/HomaAeolusSimulation/RpcTransportDesign/OMNeT++Simulation/inet »
+OMNeT++ Discrete Event Simulation  (C) 1992-2014 Andras Varga, OpenSim Ltd.
+Version: 4.6, build: 141202-f785492, edition: Academic Public License -- NOT FOR COMMERCIAL USE
+See the license for distribution terms and warranty disclaimer
+Setting up Cmdenv...
+Loading NED files from ..: 11
+Loading NED files from ../../simulations: 1
+Loading NED files from ../../../inet/examples: 148
+Loading NED files from ../../../inet/src: 397
+
+Preparing for running configuration test, run #0...
+Scenario: $workloadType=SIMPLE_WORKLOAD, $msgSizeRanges=1 2 3 4 5 90 100 1000 10000 100000, $loadFactor=0.1*0.1, $interArrivalDist=SIMPLE, $startTime=0s, $stopTime=2s, $prioLevels=8, $adaptiveSchedPrioLevels=1, $numSendersToKeepGranted=1, $prioResolverPrioLevels=8-1, $numServersPerTor=2, $numTors=1, $fabricLinkSpeed=40Gbps, $nicLinkSpeed=10Gbps, $edgeLinkDelay=0.25ms, $fabricLinkDelay=0.25ms, $hostSwTurnAroundTime=0.5ms, $hostNicSxThinkTime=0.5us, $switchFixDelay=0.5ms, $isFabricCutThrough=false, $RTT=0x2710, $transportSchemeType=HomaTransport, $isRoundRobinScheduler=false, $useUnschRateInScheduler=false, $maxOutstandingRecvBytes=0x2710, $unschedPrioResolutionMode=STATIC_CBF_GRADUATED, $unschedPrioUsageWeight=1, $cbfCapMsgSize=0x2710, $boostTailBytesPrio=0x2710, $defaultReqBytes=1442, $defaultUnschedBytes=7886, $senderScheme=SRBF, $accountForGrantTraffic=true, $linkCheckBytes=-1, $rlf=0.1, $repetition=0
+Assigned runID=test-0-20221018-14:51:52-180137
+Setting up network `SimpleNetwork'...
+Initializing...
+Initializing channel SimpleNetwork.tor.ethg$o[0].channel, stage 0
+Initializing channel SimpleNetwork.tor.ethg$o[1].channel, stage 0
+Initializing channel SimpleNetwork.host[0].ethg$o[0].channel, stage 0
+Initializing channel SimpleNetwork.host[1].ethg$o[0].channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[0].phys$o.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[1].phys$o.channel, stage 0
+Initializing channel SimpleNetwork.tor.ethg$i[0].channel, stage 0
+Initializing channel SimpleNetwork.tor.ethg$i[1].channel, stage 0
+Initializing channel SimpleNetwork.tor.networkLayer.ip.queueOut[0].channel, stage 0
+Initializing channel SimpleNetwork.tor.networkLayer.ip.queueOut[1].channel, stage 0
+Initializing channel SimpleNetwork.tor.networkLayer.ip.queueOut[2].channel, stage 0
+Initializing channel SimpleNetwork.tor.networkLayer.ifIn[0].channel, stage 0
+Initializing channel SimpleNetwork.tor.networkLayer.ifIn[1].channel, stage 0
+Initializing channel SimpleNetwork.tor.networkLayer.ifIn[2].channel, stage 0
+Initializing channel SimpleNetwork.tor.lo0.lo.netwOut.channel, stage 0
+Initializing channel SimpleNetwork.tor.lo0.upperLayerIn.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[0].inputHook[0].out.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[0].mac.upperLayerOut.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[0].mac.phys$o.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[0].encap.lowerLayerOut.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[0].upperLayerIn.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[0].phys$i.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[1].inputHook[0].out.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[1].mac.upperLayerOut.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[1].mac.phys$o.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[1].encap.lowerLayerOut.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[1].upperLayerIn.channel, stage 0
+Initializing channel SimpleNetwork.tor.eth[1].phys$i.channel, stage 0
+Initializing channel SimpleNetwork.host[0].eth[0].phys$o.channel, stage 0
+Initializing channel SimpleNetwork.host[0].ethg$i[0].channel, stage 0
+Initializing channel SimpleNetwork.host[0].networkLayer.ip.transportOut[0].channel, stage 0
+Initializing channel SimpleNetwork.host[0].networkLayer.ip.queueOut[0].channel, stage 0
+Initializing channel SimpleNetwork.host[0].networkLayer.ip.queueOut[1].channel, stage 0
+Initializing channel SimpleNetwork.host[0].networkLayer.ifIn[0].channel, stage 0
+Initializing channel SimpleNetwork.host[0].networkLayer.ifIn[1].channel, stage 0
+Initializing channel SimpleNetwork.host[0].networkLayer.transportIn[0].channel, stage 0
+Initializing channel SimpleNetwork.host[0].lo0.lo.netwOut.channel, stage 0
+Initializing channel SimpleNetwork.host[0].lo0.upperLayerIn.channel, stage 0
+Initializing channel SimpleNetwork.host[0].eth[0].inputHook[0].out.channel, stage 0
+Initializing channel SimpleNetwork.host[0].eth[0].mac.upperLayerOut.channel, stage 0
+Initializing channel SimpleNetwork.host[0].eth[0].mac.phys$o.channel, stage 0
+Initializing channel SimpleNetwork.host[0].eth[0].encap.lowerLayerOut.channel, stage 0
+Initializing channel SimpleNetwork.host[0].eth[0].upperLayerIn.channel, stage 0
+Initializing channel SimpleNetwork.host[0].eth[0].phys$i.channel, stage 0
+Initializing channel SimpleNetwork.host[1].eth[0].phys$o.channel, stage 0
+Initializing channel SimpleNetwork.host[1].ethg$i[0].channel, stage 0
+Initializing channel SimpleNetwork.host[1].networkLayer.ip.transportOut[0].channel, stage 0
+Initializing channel SimpleNetwork.host[1].networkLayer.ip.queueOut[0].channel, stage 0
+Initializing channel SimpleNetwork.host[1].networkLayer.ip.queueOut[1].channel, stage 0
+Initializing channel SimpleNetwork.host[1].networkLayer.ifIn[0].channel, stage 0
+Initializing channel SimpleNetwork.host[1].networkLayer.ifIn[1].channel, stage 0
+Initializing channel SimpleNetwork.host[1].networkLayer.transportIn[0].channel, stage 0
+Initializing channel SimpleNetwork.host[1].lo0.lo.netwOut.channel, stage 0
+Initializing channel SimpleNetwork.host[1].lo0.upperLayerIn.channel, stage 0
+Initializing channel SimpleNetwork.host[1].eth[0].inputHook[0].out.channel, stage 0
+Initializing channel SimpleNetwork.host[1].eth[0].mac.upperLayerOut.channel, stage 0
+Initializing channel SimpleNetwork.host[1].eth[0].mac.phys$o.channel, stage 0
+Initializing channel SimpleNetwork.host[1].eth[0].encap.lowerLayerOut.channel, stage 0
+Initializing channel SimpleNetwork.host[1].eth[0].upperLayerIn.channel, stage 0
+Initializing channel SimpleNetwork.host[1].eth[0].phys$i.channel, stage 0
+Initializing module SimpleNetwork, stage 0
+Initializing module SimpleNetwork.tor, stage 0
+Initializing module SimpleNetwork.tor.networkLayer, stage 0
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 0
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 0
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 0
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 0
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 0
+Initializing module SimpleNetwork.tor.networkLayer.errorHandling, stage 0
+Initializing module SimpleNetwork.tor.routingTable, stage 0
+Initializing module SimpleNetwork.tor.interfaceTable, stage 0
+Initializing module SimpleNetwork.tor.lo0, stage 0
+Initializing module SimpleNetwork.tor.lo0.lo, stage 0
+Initializing module SimpleNetwork.tor.eth[0], stage 0
+Initializing module SimpleNetwork.tor.eth[0].outputHook[0], stage 0
+Initializing module SimpleNetwork.tor.eth[0].inputHook[0], stage 0
+Initializing module SimpleNetwork.tor.eth[0].queue, stage 0
+Initializing module SimpleNetwork.tor.eth[0].queue.classifier, stage 0
+Initializing module SimpleNetwork.tor.eth[0].queue.pauseQueue, stage 0
+Selecting HomaTransport for queues...
+DEBUG: Capacity : 0
+Initializing module SimpleNetwork.tor.eth[0].queue.dataQueue, stage 0
+Selecting HomaTransport for queues...
+DEBUG: Capacity : 0
+Initializing module SimpleNetwork.tor.eth[0].queue.scheduler, stage 0
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 0
+Initializing module SimpleNetwork.tor.eth[0].encap, stage 0
+Initializing module SimpleNetwork.tor.eth[1], stage 0
+Initializing module SimpleNetwork.tor.eth[1].outputHook[0], stage 0
+Initializing module SimpleNetwork.tor.eth[1].inputHook[0], stage 0
+Initializing module SimpleNetwork.tor.eth[1].queue, stage 0
+Initializing module SimpleNetwork.tor.eth[1].queue.classifier, stage 0
+Initializing module SimpleNetwork.tor.eth[1].queue.pauseQueue, stage 0
+Selecting HomaTransport for queues...
+DEBUG: Capacity : 0
+Initializing module SimpleNetwork.tor.eth[1].queue.dataQueue, stage 0
+Selecting HomaTransport for queues...
+DEBUG: Capacity : 0
+Initializing module SimpleNetwork.tor.eth[1].queue.scheduler, stage 0
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 0
+Initializing module SimpleNetwork.tor.eth[1].encap, stage 0
+Initializing module SimpleNetwork.host[0], stage 0
+Initializing module SimpleNetwork.host[0].networkLayer, stage 0
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 0
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 0
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 0
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 0
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 0
+Initializing module SimpleNetwork.host[0].networkLayer.errorHandling, stage 0
+Initializing module SimpleNetwork.host[0].routingTable, stage 0
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 0
+Initializing module SimpleNetwork.host[0].lo0, stage 0
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 0
+Initializing module SimpleNetwork.host[0].eth[0], stage 0
+Initializing module SimpleNetwork.host[0].eth[0].outputHook[0], stage 0
+Initializing module SimpleNetwork.host[0].eth[0].inputHook[0], stage 0
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 0
+Initializing module SimpleNetwork.host[0].eth[0].encap, stage 0
+Initializing module SimpleNetwork.host[0].trafficGeneratorApp[0], stage 0
+YOavgInterArrivalTime : 1
+Initializing module SimpleNetwork.host[0].transportScheme, stage 0
+100
+Init priorityResolver() invoked
+Initializing module SimpleNetwork.host[0].udp, stage 0
+Initializing module SimpleNetwork.host[1], stage 0
+Initializing module SimpleNetwork.host[1].networkLayer, stage 0
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 0
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 0
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 0
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 0
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 0
+Initializing module SimpleNetwork.host[1].networkLayer.errorHandling, stage 0
+Initializing module SimpleNetwork.host[1].routingTable, stage 0
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 0
+Initializing module SimpleNetwork.host[1].lo0, stage 0
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 0
+Initializing module SimpleNetwork.host[1].eth[0], stage 0
+Initializing module SimpleNetwork.host[1].eth[0].outputHook[0], stage 0
+Initializing module SimpleNetwork.host[1].eth[0].inputHook[0], stage 0
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 0
+Initializing module SimpleNetwork.host[1].eth[0].encap, stage 0
+Initializing module SimpleNetwork.host[1].trafficGeneratorApp[0], stage 0
+YOavgInterArrivalTime : 1
+Initializing module SimpleNetwork.host[1].transportScheme, stage 0
+100
+Init priorityResolver() invoked
+Initializing module SimpleNetwork.host[1].udp, stage 0
+Initializing module SimpleNetwork.configurator, stage 0
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 1
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 1
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 1
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 1
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 1
+Initializing module SimpleNetwork.tor.routingTable, stage 1
+Initializing module SimpleNetwork.tor.interfaceTable, stage 1
+Initializing module SimpleNetwork.tor.lo0.lo, stage 1
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 1
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 1
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 1
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 1
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 1
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 1
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 1
+Initializing module SimpleNetwork.host[0].routingTable, stage 1
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 1
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 1
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 1
+Initializing module SimpleNetwork.host[0].udp, stage 1
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 1
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 1
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 1
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 1
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 1
+Initializing module SimpleNetwork.host[1].routingTable, stage 1
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 1
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 1
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 1
+Initializing module SimpleNetwork.host[1].udp, stage 1
+Initializing module SimpleNetwork.configurator, stage 1
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 2
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 2
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 2
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 2
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 2
+Initializing module SimpleNetwork.tor.routingTable, stage 2
+Initializing module SimpleNetwork.tor.interfaceTable, stage 2
+Initializing module SimpleNetwork.tor.lo0.lo, stage 2
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 2
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 2
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 2
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 2
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 2
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 2
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 2
+Initializing module SimpleNetwork.host[0].routingTable, stage 2
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 2
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 2
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 2
+Initializing module SimpleNetwork.host[0].udp, stage 2
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 2
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 2
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 2
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 2
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 2
+Initializing module SimpleNetwork.host[1].routingTable, stage 2
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 2
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 2
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 2
+Initializing module SimpleNetwork.host[1].udp, stage 2
+Initializing module SimpleNetwork.configurator, stage 2
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 3
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 3
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 3
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 3
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 3
+Initializing module SimpleNetwork.tor.routingTable, stage 3
+Initializing module SimpleNetwork.tor.interfaceTable, stage 3
+Initializing module SimpleNetwork.tor.lo0.lo, stage 3
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 3
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 3
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 3
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 3
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 3
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 3
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 3
+Initializing module SimpleNetwork.host[0].routingTable, stage 3
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 3
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 3
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 3
+Initializing module SimpleNetwork.host[0].udp, stage 3
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 3
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 3
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 3
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 3
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 3
+Initializing module SimpleNetwork.host[1].routingTable, stage 3
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 3
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 3
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 3
+Initializing module SimpleNetwork.host[1].udp, stage 3
+Initializing module SimpleNetwork.configurator, stage 3
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 4
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 4
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 4
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 4
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 4
+Initializing module SimpleNetwork.tor.routingTable, stage 4
+Initializing module SimpleNetwork.tor.interfaceTable, stage 4
+Initializing module SimpleNetwork.tor.lo0.lo, stage 4
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 4
+DETAIL: Requesting first frame from queue module
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 4
+DETAIL: Requesting first frame from queue module
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 4
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 4
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 4
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 4
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 4
+Initializing module SimpleNetwork.host[0].routingTable, stage 4
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 4
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 4
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 4
+DETAIL: No more frames to send, transmitter set to idle
+Initializing module SimpleNetwork.host[0].udp, stage 4
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 4
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 4
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 4
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 4
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 4
+Initializing module SimpleNetwork.host[1].routingTable, stage 4
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 4
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 4
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 4
+DETAIL: No more frames to send, transmitter set to idle
+Initializing module SimpleNetwork.host[1].udp, stage 4
+Initializing module SimpleNetwork.configurator, stage 4
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 5
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 5
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 5
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 5
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 5
+Initializing module SimpleNetwork.tor.routingTable, stage 5
+Initializing module SimpleNetwork.tor.interfaceTable, stage 5
+Initializing module SimpleNetwork.tor.lo0.lo, stage 5
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 5
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 5
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 5
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 5
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 5
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 5
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 5
+Initializing module SimpleNetwork.host[0].routingTable, stage 5
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 5
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 5
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 5
+Initializing module SimpleNetwork.host[0].udp, stage 5
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 5
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 5
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 5
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 5
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 5
+Initializing module SimpleNetwork.host[1].routingTable, stage 5
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 5
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 5
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 5
+Initializing module SimpleNetwork.host[1].udp, stage 5
+Initializing module SimpleNetwork.configurator, stage 5
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 6
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 6
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 6
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 6
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 6
+Initializing module SimpleNetwork.tor.routingTable, stage 6
+Initializing module SimpleNetwork.tor.interfaceTable, stage 6
+Initializing module SimpleNetwork.tor.lo0.lo, stage 6
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 6
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 6
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 6
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 6
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 6
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 6
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 6
+Initializing module SimpleNetwork.host[0].routingTable, stage 6
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 6
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 6
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 6
+Initializing module SimpleNetwork.host[0].udp, stage 6
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 6
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 6
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 6
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 6
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 6
+Initializing module SimpleNetwork.host[1].routingTable, stage 6
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 6
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 6
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 6
+Initializing module SimpleNetwork.host[1].udp, stage 6
+Initializing module SimpleNetwork.configurator, stage 6
+Computing static network configuration (addresses and routes).
+DEBUG: Topology found 3 nodes
+[time] DEBUG: Time spent in IPv4NetworkConfigurator::extractTopology(topology): 0.000476s
+DEBUG: Processing interface configuration for SimpleNetwork.host[0]:eth0
+DEBUG: Processing interface configuration for SimpleNetwork.host[1]:eth0
+DEBUG: Processing interface configuration for SimpleNetwork.tor:eth0
+DEBUG: Processing interface configuration for SimpleNetwork.tor:eth1
+[time] DEBUG: Time spent in IPv4NetworkConfigurator::readInterfaceConfiguration(topology): 0.000266s
+DEBUG: Trying to merge SimpleNetwork.tor.eth0 interface with address specification: 199.200.201.0 / 255.255.255.0
+DEBUG: Trying to merge SimpleNetwork.tor.eth0 interface with netmask specification: 255.0.0.0 / 255.0.0.0
+DEBUG: Merged address specification: 199.200.201.0 / 255.255.255.0 / <unspec>
+DEBUG: Merged netmask specification: 255.0.0.0 / 255.0.0.0 / <unspec>
+DEBUG: Trying to merge SimpleNetwork.host[0].eth0 interface with address specification: 128.128.128.0 / 255.255.255.0
+DEBUG: Trying to merge SimpleNetwork.host[0].eth0 interface with netmask specification: 255.0.0.0 / 255.0.0.0
+DEBUG: Found 1 compatible interfaces
+DEBUG: Netmask valid length range: 8 - 30
+DEBUG: Trying network netmask: 255.255.255.252 : 30
+DEBUG: Counting from: 1 to: 64
+DEBUG: Trying network address: 199.200.201.0
+DEBUG: Matching interface count: 0
+DEBUG: Selected netmask length: 30
+DEBUG: Selected network address: 199.200.201.0
+DEBUG: Selected network netmask: 255.255.255.252
+DEBUG: Selected interface address: 199.200.201.1
+DEBUG: Trying to merge SimpleNetwork.host[0].eth0 interface with address specification: 128.128.128.0 / 255.255.255.0
+DEBUG: Trying to merge SimpleNetwork.host[0].eth0 interface with netmask specification: 255.0.0.0 / 255.0.0.0
+DEBUG: Merged address specification: 128.128.128.0 / 255.255.255.0 / <unspec>
+DEBUG: Merged netmask specification: 255.0.0.0 / 255.0.0.0 / <unspec>
+DEBUG: Found 1 compatible interfaces
+DEBUG: Netmask valid length range: 8 - 30
+DEBUG: Trying network netmask: 255.255.255.252 : 30
+DEBUG: Checking against assigned network address 199.200.201.0
+DEBUG: Counting from: 1 to: 64
+DEBUG: Trying network address: 128.128.128.0
+DEBUG: Matching interface count: 0
+DEBUG: Selected netmask length: 30
+DEBUG: Selected network address: 128.128.128.0
+DEBUG: Selected network netmask: 255.255.255.252
+DEBUG: Selected interface address: 128.128.128.1
+DEBUG: Trying to merge SimpleNetwork.tor.eth1 interface with address specification: 199.200.201.0 / 255.255.255.0
+DEBUG: Trying to merge SimpleNetwork.tor.eth1 interface with netmask specification: 255.0.0.0 / 255.0.0.0
+DEBUG: Merged address specification: 199.200.201.0 / 255.255.255.0 / <unspec>
+DEBUG: Merged netmask specification: 255.0.0.0 / 255.0.0.0 / <unspec>
+DEBUG: Trying to merge SimpleNetwork.host[1].eth0 interface with address specification: 128.128.128.0 / 255.255.255.0
+DEBUG: Trying to merge SimpleNetwork.host[1].eth0 interface with netmask specification: 255.0.0.0 / 255.0.0.0
+DEBUG: Found 1 compatible interfaces
+DEBUG: Netmask valid length range: 8 - 30
+DEBUG: Trying network netmask: 255.255.255.252 : 30
+DEBUG: Checking against assigned network address 199.200.201.0
+DEBUG: Checking against assigned network address 128.128.128.0
+DEBUG: Counting from: 1 to: 64
+DEBUG: Trying network address: 199.200.201.0
+DEBUG: Trying network address: 199.200.201.4
+DEBUG: Matching interface count: 0
+DEBUG: Selected netmask length: 30
+DEBUG: Selected network address: 199.200.201.4
+DEBUG: Selected network netmask: 255.255.255.252
+DEBUG: Selected interface address: 199.200.201.5
+DEBUG: Trying to merge SimpleNetwork.host[1].eth0 interface with address specification: 128.128.128.0 / 255.255.255.0
+DEBUG: Trying to merge SimpleNetwork.host[1].eth0 interface with netmask specification: 255.0.0.0 / 255.0.0.0
+DEBUG: Merged address specification: 128.128.128.0 / 255.255.255.0 / <unspec>
+DEBUG: Merged netmask specification: 255.0.0.0 / 255.0.0.0 / <unspec>
+DEBUG: Found 1 compatible interfaces
+DEBUG: Netmask valid length range: 8 - 30
+DEBUG: Trying network netmask: 255.255.255.252 : 30
+DEBUG: Checking against assigned network address 199.200.201.0
+DEBUG: Checking against assigned network address 128.128.128.0
+DEBUG: Checking against assigned network address 199.200.201.4
+DEBUG: Counting from: 1 to: 64
+DEBUG: Trying network address: 128.128.128.0
+DEBUG: Trying network address: 128.128.128.4
+DEBUG: Matching interface count: 0
+DEBUG: Selected netmask length: 30
+DEBUG: Selected network address: 128.128.128.4
+DEBUG: Selected network netmask: 255.255.255.252
+DEBUG: Selected interface address: 128.128.128.5
+[time] DEBUG: Time spent in IPv4NetworkConfigurator::assignAddresses(topology): 0.000225s
+[time] DEBUG: Time spent in IPv4NetworkConfigurator::readMulticastGroupConfiguration(topology): 2e-06s
+DEBUG: Adding route SimpleNetwork.tor.eth0 -> SimpleNetwork.host[0].eth0 as dest:128.128.128.0  gw:*  mask:255.255.255.252  metric:0 if:eth0(<unspec>)  DIRECT MANUAL
+DEBUG: Adding route SimpleNetwork.tor.eth1 -> SimpleNetwork.host[1].eth0 as dest:128.128.128.4  gw:*  mask:255.255.255.252  metric:0 if:eth1(<unspec>)  DIRECT MANUAL
+DEBUG: Adding default routes to SimpleNetwork.host[0], node has only one (non-loopback) interface
+DEBUG: Adding default routes to SimpleNetwork.host[1], node has only one (non-loopback) interface
+[time] DEBUG: Time spent in IPv4NetworkConfigurator::addStaticRoutes(topology): 0.000228s
+[time] DEBUG: Time spent in IPv4NetworkConfigurator::computeConfiguration: 0.00122s
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 7
+DETAIL: Configuring network interface SimpleNetwork.tor.eth0.
+DETAIL: Configuring network interface SimpleNetwork.tor.eth1.
+DETAIL: Configuring routing table of SimpleNetwork.tor.
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 7
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 7
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 7
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 7
+Initializing module SimpleNetwork.tor.routingTable, stage 7
+Initializing module SimpleNetwork.tor.interfaceTable, stage 7
+Initializing module SimpleNetwork.tor.lo0.lo, stage 7
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 7
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 7
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 7
+DETAIL: Configuring network interface SimpleNetwork.host[0].eth0.
+DETAIL: Configuring routing table of SimpleNetwork.host[0].
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 7
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 7
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 7
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 7
+Initializing module SimpleNetwork.host[0].routingTable, stage 7
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 7
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 7
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 7
+Initializing module SimpleNetwork.host[0].udp, stage 7
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 7
+DETAIL: Configuring network interface SimpleNetwork.host[1].eth0.
+DETAIL: Configuring routing table of SimpleNetwork.host[1].
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 7
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 7
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 7
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 7
+Initializing module SimpleNetwork.host[1].routingTable, stage 7
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 7
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 7
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 7
+Initializing module SimpleNetwork.host[1].udp, stage 7
+Initializing module SimpleNetwork.configurator, stage 7
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 8
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 8
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 8
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 8
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 8
+Initializing module SimpleNetwork.tor.routingTable, stage 8
+Initializing module SimpleNetwork.tor.interfaceTable, stage 8
+Initializing module SimpleNetwork.tor.lo0.lo, stage 8
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 8
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 8
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 8
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 8
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 8
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 8
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 8
+Initializing module SimpleNetwork.host[0].routingTable, stage 8
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 8
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 8
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 8
+Initializing module SimpleNetwork.host[0].udp, stage 8
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 8
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 8
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 8
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 8
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 8
+Initializing module SimpleNetwork.host[1].routingTable, stage 8
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 8
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 8
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 8
+Initializing module SimpleNetwork.host[1].udp, stage 8
+Initializing module SimpleNetwork.configurator, stage 8
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 9
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 9
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 9
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 9
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 9
+Initializing module SimpleNetwork.tor.routingTable, stage 9
+Initializing module SimpleNetwork.tor.interfaceTable, stage 9
+Initializing module SimpleNetwork.tor.lo0.lo, stage 9
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 9
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 9
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 9
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 9
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 9
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 9
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 9
+Initializing module SimpleNetwork.host[0].routingTable, stage 9
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 9
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 9
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 9
+Initializing module SimpleNetwork.host[0].udp, stage 9
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 9
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 9
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 9
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 9
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 9
+Initializing module SimpleNetwork.host[1].routingTable, stage 9
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 9
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 9
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 9
+Initializing module SimpleNetwork.host[1].udp, stage 9
+Initializing module SimpleNetwork.configurator, stage 9
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 10
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 10
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 10
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 10
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 10
+Initializing module SimpleNetwork.tor.routingTable, stage 10
+Initializing module SimpleNetwork.tor.interfaceTable, stage 10
+Initializing module SimpleNetwork.tor.lo0.lo, stage 10
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 10
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 10
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 10
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 10
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 10
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 10
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 10
+Initializing module SimpleNetwork.host[0].routingTable, stage 10
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 10
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 10
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 10
+Initializing module SimpleNetwork.host[0].udp, stage 10
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 10
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 10
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 10
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 10
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 10
+Initializing module SimpleNetwork.host[1].routingTable, stage 10
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 10
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 10
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 10
+Initializing module SimpleNetwork.host[1].udp, stage 10
+Initializing module SimpleNetwork.configurator, stage 10
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 11
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 11
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 11
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 11
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 11
+Initializing module SimpleNetwork.tor.routingTable, stage 11
+Initializing module SimpleNetwork.tor.interfaceTable, stage 11
+Initializing module SimpleNetwork.tor.lo0.lo, stage 11
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 11
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 11
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 11
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 11
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 11
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 11
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 11
+Initializing module SimpleNetwork.host[0].routingTable, stage 11
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 11
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 11
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 11
+Initializing module SimpleNetwork.host[0].udp, stage 11
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 11
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 11
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 11
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 11
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 11
+Initializing module SimpleNetwork.host[1].routingTable, stage 11
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 11
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 11
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 11
+Initializing module SimpleNetwork.host[1].udp, stage 11
+Initializing module SimpleNetwork.configurator, stage 11
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 12
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 12
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 12
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 12
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 12
+Initializing module SimpleNetwork.tor.routingTable, stage 12
+Initializing module SimpleNetwork.tor.interfaceTable, stage 12
+Initializing module SimpleNetwork.tor.lo0.lo, stage 12
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 12
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 12
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 12
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 12
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 12
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 12
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 12
+Initializing module SimpleNetwork.host[0].routingTable, stage 12
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 12
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 12
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 12
+Initializing module SimpleNetwork.host[0].udp, stage 12
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 12
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 12
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 12
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 12
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 12
+Initializing module SimpleNetwork.host[1].routingTable, stage 12
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 12
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 12
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 12
+Initializing module SimpleNetwork.host[1].udp, stage 12
+Initializing module SimpleNetwork.configurator, stage 12
+Initializing module SimpleNetwork.tor.networkLayer.configurator, stage 13
+Initializing module SimpleNetwork.tor.networkLayer.ip, stage 13
+Initializing module SimpleNetwork.tor.networkLayer.arp, stage 13
+Initializing module SimpleNetwork.tor.networkLayer.icmp, stage 13
+Initializing module SimpleNetwork.tor.networkLayer.igmp, stage 13
+Initializing module SimpleNetwork.tor.routingTable, stage 13
+Initializing module SimpleNetwork.tor.interfaceTable, stage 13
+Initializing module SimpleNetwork.tor.lo0.lo, stage 13
+Initializing module SimpleNetwork.tor.eth[0].mac, stage 13
+Initializing module SimpleNetwork.tor.eth[1].mac, stage 13
+Initializing module SimpleNetwork.host[0].networkLayer.configurator, stage 13
+Initializing module SimpleNetwork.host[0].networkLayer.ip, stage 13
+Initializing module SimpleNetwork.host[0].networkLayer.arp, stage 13
+Initializing module SimpleNetwork.host[0].networkLayer.icmp, stage 13
+Initializing module SimpleNetwork.host[0].networkLayer.igmp, stage 13
+Initializing module SimpleNetwork.host[0].routingTable, stage 13
+Initializing module SimpleNetwork.host[0].interfaceTable, stage 13
+Initializing module SimpleNetwork.host[0].lo0.lo, stage 13
+Initializing module SimpleNetwork.host[0].eth[0].mac, stage 13
+Initializing module SimpleNetwork.host[0].udp, stage 13
+Initializing module SimpleNetwork.host[1].networkLayer.configurator, stage 13
+Initializing module SimpleNetwork.host[1].networkLayer.ip, stage 13
+Initializing module SimpleNetwork.host[1].networkLayer.arp, stage 13
+Initializing module SimpleNetwork.host[1].networkLayer.icmp, stage 13
+Initializing module SimpleNetwork.host[1].networkLayer.igmp, stage 13
+Initializing module SimpleNetwork.host[1].routingTable, stage 13
+Initializing module SimpleNetwork.host[1].interfaceTable, stage 13
+Initializing module SimpleNetwork.host[1].lo0.lo, stage 13
+Initializing module SimpleNetwork.host[1].eth[0].mac, stage 13
+Initializing module SimpleNetwork.host[1].udp, stage 13
+Initializing module SimpleNetwork.configurator, stage 13
+
+Running simulation...
+** Event #1  T=0  0% completed   SimpleNetwork.host[0].trafficGeneratorApp[0] (WorkloadSynthesizer, id=42)
+Test with deterministic dist
+** Event #2  T=0  0% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #3  T=0  0% completed   SimpleNetwork.host[1].trafficGeneratorApp[0] (WorkloadSynthesizer, id=61)
+DEBUG: 61
+** Event #4  T=0  0% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+** Event #5  T=0  0% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+** Event #6  T=0  0% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+** Event #7  T=0  0% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+** Event #8  T=0  0% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+** Event #9  T=0  0% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+** Event #10  T=0  0% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+** Event #11  T=0  0% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+** Event #12  T=0  0% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+** Event #13  T=0  0% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Socket created: sockId=0 appGateIndex=0 localPort=2222
+** Event #14  T=0  0% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #15  T=0  0% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Socket created: sockId=1 appGateIndex=0 localPort=2222
+** Event #16  T=0  0% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+** Event #17  T=1  92% completed   SimpleNetwork.host[0].trafficGeneratorApp[0] (WorkloadSynthesizer, id=42)
+DETAIL: Selected destination address: 128.128.128.5 among 1 available destinations.
+Test with deterministic dist
+** Event #18  T=1  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #19  T=1  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #20  T=1  92% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #21  T=1  92% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+Starting ARP resolution for 199.200.201.1
+Sending (inet::ARPPacket)arpREQ to network protocol.
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #22  T=1  92% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::ARPPacket)arpREQ from arp.
+Sending (inet::ARPPacket)arpREQ to output interface = eth0.
+** Event #23  T=1  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #24  T=1.0000012304  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #25  T=1.0000012304  92% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #26  T=1.0000012304  92% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+ARP resolution for 199.200.201.1 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #27  T=1.0000024608  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #28  T=1.0000024608  92% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #29  T=1.0000024608  92% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+ARP resolution for 199.200.201.1 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #30  T=1.0000036912  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #31  T=1.0000036912  92% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #32  T=1.0000036912  92% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+ARP resolution for 199.200.201.1 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #33  T=1.0000049216  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #34  T=1.0000049216  92% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #35  T=1.0000049216  92% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+ARP resolution for 199.200.201.1 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #36  T=1.000006152  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #37  T=1.000006152  92% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #38  T=1.000006152  92% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+ARP resolution for 199.200.201.1 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #39  T=1.0000073824  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #40  T=1.0000073824  92% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #41  T=1.0000073824  92% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+ARP resolution for 199.200.201.1 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #42  T=1.000008  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #43  T=1.0005  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #44  T=1.0005  92% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::ARPPacket)arpREQ from upper layer.
+DETAIL: Encapsulating higher layer packet `arpREQ' for MAC
+Sending (inet::EthernetIIFrame)arpREQ to lower layer.
+** Event #45  T=1.0005  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame)arpREQ from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame)arpREQ arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)arpREQ
+Transmission of (inet::EthernetIIFrame)arpREQ started.
+** Event #46  T=1.0005000576  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame)arpREQ successfully completed.
+DETAIL: Start IFG period
+** Event #47  T=1.0005000672  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #48  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame)arpREQ started.
+Reception of (inet::EthernetIIFrame)arpREQ successfully completed.
+Sending (inet::EthernetIIFrame)arpREQ to upper layer.
+** Event #49  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame)arpREQ from lower layer.
+DETAIL: Decapsulating frame `arpREQ', passing up contained packet `arpREQ' to higher layer
+Sending (inet::ARPPacket)arpREQ to upper layer.
+** Event #50  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #51  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #52  T=1.0007505576  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::ARPPacket)arpREQ from network.
+Sending (inet::ARPPacket)arpREQ to arp.
+** Event #53  T=1.0007505576  92% completed   SimpleNetwork.tor.networkLayer.arp (ARP, id=14)
+Received (inet::ARPPacket)arpREQ from network protocol.
+DETAIL: ARP_REQ  src=128.128.128.1 / 0A-AA-00-00-00-03  dest=199.200.201.1 / 00-00-00-00-00-00
+DETAIL: Updating ARP cache entry: 128.128.128.1 <--> 0A-AA-00-00-00-03
+DETAIL: Packet was ARP REQUEST, sending REPLY
+Sending (inet::ARPPacket)arpREPLY to network protocol.
+** Event #54  T=1.0007505576  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::ARPPacket)arpREPLY from arp.
+Sending (inet::ARPPacket)arpREPLY to output interface = eth0.
+** Event #55  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #56  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #57  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::ARPPacket)arpREPLY from upper layer.
+DETAIL: Encapsulating higher layer packet `arpREPLY' for MAC
+Sending (inet::EthernetIIFrame)arpREPLY to lower layer.
+** Event #58  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].queue.classifier (EtherFrameClassifier, id=24)
+** Event #59  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].queue.dataQueue (DropTailQueue, id=26)
+
+=== Enqueuing packet === 
+=== Dequeuing packet === 
+
+** Event #60  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].queue.scheduler (PriorityScheduler, id=27)
+** Event #61  T=1.0007505576  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Received (inet::EthernetIIFrame)arpREPLY from upper layer.
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)arpREPLY
+Transmission of (inet::EthernetIIFrame)arpREPLY started.
+** Event #62  T=1.0007506152  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame)arpREPLY successfully completed.
+DETAIL: Start IFG period
+** Event #63  T=1.0007506248  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+** Event #64  T=1.001  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #65  T=1.0015006152  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Reception of (inet::EthernetIIFrame)arpREPLY started.
+Reception of (inet::EthernetIIFrame)arpREPLY successfully completed.
+Sending (inet::EthernetIIFrame)arpREPLY to upper layer.
+** Event #66  T=1.0015006152  92% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::EthernetIIFrame)arpREPLY from lower layer.
+DETAIL: Decapsulating frame `arpREPLY', passing up contained packet `arpREPLY' to higher layer
+Sending (inet::ARPPacket)arpREPLY to upper layer.
+** Event #67  T=1.0015006152  92% completed   SimpleNetwork.host[0].eth[0].inputHook[0] (Lagger, id=53)
+** Event #68  T=1.002  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #69  T=1.0020006152  92% completed   SimpleNetwork.host[0].eth[0].inputHook[0] (Lagger, id=53)
+** Event #70  T=1.0020006152  92% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::ARPPacket)arpREPLY from network.
+Sending (inet::ARPPacket)arpREPLY to arp.
+** Event #71  T=1.0020006152  92% completed   SimpleNetwork.host[0].networkLayer.arp (ARP, id=47)
+Received (inet::ARPPacket)arpREPLY from network protocol.
+DETAIL: ARP_REPLY  src=199.200.201.1 / 0A-AA-00-00-00-01  dest=128.128.128.1 / 0A-AA-00-00-00-03
+DETAIL: Updating ARP cache entry: 199.200.201.1 <--> 0A-AA-00-00-00-01
+ARP resolution completed for 199.200.201.1. Sending 7 waiting packets from the queue
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+DETAIL: Discarding packet
+** Event #72  T=1.0020006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #73  T=1.0020006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #74  T=1.0020006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #75  T=1.0020006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #76  T=1.0020006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #77  T=1.0020006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #78  T=1.0020006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #79  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #80  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #81  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #82  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #83  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #84  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #85  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #86  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #87  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #88  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #89  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #90  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #91  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #92  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #93  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #94  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+** Event #95  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+** Event #96  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+** Event #97  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+** Event #98  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+** Event #99  T=1.0025006152  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+** Event #100  T=1.002501836  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #101  T=1.0025018456  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #102  T=1.0025030664  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #103  T=1.002503076  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #104  T=1.0025042968  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #105  T=1.0025043064  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #106  T=1.0025055272  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #107  T=1.0025055368  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #108  T=1.0025067576  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #109  T=1.0025067672  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #110  T=1.002507988  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #111  T=1.0025079976  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #112  T=1.0025086056  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #113  T=1.0025086152  92% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #114  T=1.002752336  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #115  T=1.002752336  92% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #116  T=1.002752336  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #117  T=1.002752336  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #118  T=1.002752336  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+Starting ARP resolution for 128.128.128.5
+Sending (inet::ARPPacket)arpREQ to network protocol.
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #119  T=1.002752336  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::ARPPacket)arpREQ from arp.
+Sending (inet::ARPPacket)arpREQ to output interface = eth1.
+** Event #120  T=1.002752336  92% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #121  T=1.002752336  92% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #122  T=1.002752336  92% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::ARPPacket)arpREQ from upper layer.
+DETAIL: Encapsulating higher layer packet `arpREQ' for MAC
+Sending (inet::EthernetIIFrame)arpREQ to lower layer.
+** Event #123  T=1.002752336  92% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #124  T=1.002752336  92% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+=== Dequeuing packet === 
+
+** Event #125  T=1.002752336  92% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #126  T=1.002752336  92% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame)arpREQ from upper layer.
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)arpREQ
+Transmission of (inet::EthernetIIFrame)arpREQ started.
+** Event #127  T=1.0027523936  92% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame)arpREQ successfully completed.
+DETAIL: Start IFG period
+** Event #128  T=1.0027524032  92% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+** Event #129  T=1.0027535664  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #130  T=1.0027535664  92% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #131  T=1.0027535664  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #132  T=1.0027535664  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #133  T=1.0027535664  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+ARP resolution for 128.128.128.5 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #134  T=1.0027547968  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #135  T=1.0027547968  92% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #136  T=1.0027547968  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #137  T=1.0027547968  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #138  T=1.0027547968  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+ARP resolution for 128.128.128.5 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #139  T=1.0027560272  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #140  T=1.0027560272  92% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #141  T=1.0027560272  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #142  T=1.0027560272  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #143  T=1.0027560272  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+ARP resolution for 128.128.128.5 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #144  T=1.0027572576  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #145  T=1.0027572576  92% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #146  T=1.0027572576  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #147  T=1.0027572576  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #148  T=1.0027572576  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+ARP resolution for 128.128.128.5 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #149  T=1.002758488  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #150  T=1.002758488  92% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #151  T=1.002758488  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #152  T=1.002758488  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #153  T=1.002758488  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+ARP resolution for 128.128.128.5 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #154  T=1.0027591056  92% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #155  T=1.0027591056  92% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #156  T=1.0027591056  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #157  T=1.0027591056  92% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #158  T=1.0027591056  92% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+ARP resolution for 128.128.128.5 is already pending
+Pending (inet::IPv4Datagram) to ARP resolution.
+** Event #159  T=1.003  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #160  T=1.0035023936  92% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame)arpREQ started.
+Reception of (inet::EthernetIIFrame)arpREQ successfully completed.
+Sending (inet::EthernetIIFrame)arpREQ to upper layer.
+** Event #161  T=1.0035023936  92% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame)arpREQ from lower layer.
+DETAIL: Decapsulating frame `arpREQ', passing up contained packet `arpREQ' to higher layer
+Sending (inet::ARPPacket)arpREQ to upper layer.
+** Event #162  T=1.0035023936  92% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #163  T=1.004  92% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #164  T=1.0040023936  92% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #165  T=1.0040023936  92% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::ARPPacket)arpREQ from network.
+Sending (inet::ARPPacket)arpREQ to arp.
+** Event #166  T=1.0040023936  92% completed   SimpleNetwork.host[1].networkLayer.arp (ARP, id=66)
+Received (inet::ARPPacket)arpREQ from network protocol.
+DETAIL: ARP_REQ  src=199.200.201.5 / 0A-AA-00-00-00-02  dest=128.128.128.5 / 00-00-00-00-00-00
+DETAIL: Updating ARP cache entry: 199.200.201.5 <--> 0A-AA-00-00-00-02
+DETAIL: Packet was ARP REQUEST, sending REPLY
+Sending (inet::ARPPacket)arpREPLY to network protocol.
+** Event #167  T=1.0040023936  92% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::ARPPacket)arpREPLY from arp.
+Sending (inet::ARPPacket)arpREPLY to output interface = eth0.
+** Event #168  T=1.0040023936  92% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #169  T=1.0045023936  93% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #170  T=1.0045023936  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::ARPPacket)arpREPLY from upper layer.
+DETAIL: Encapsulating higher layer packet `arpREPLY' for MAC
+Sending (inet::EthernetIIFrame)arpREPLY to lower layer.
+** Event #171  T=1.0045023936  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Received (inet::EthernetIIFrame)arpREPLY from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame)arpREPLY arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)arpREPLY
+Transmission of (inet::EthernetIIFrame)arpREPLY started.
+** Event #172  T=1.0045024512  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame)arpREPLY successfully completed.
+DETAIL: Start IFG period
+** Event #173  T=1.0045024608  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #174  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Reception of (inet::EthernetIIFrame)arpREPLY started.
+Reception of (inet::EthernetIIFrame)arpREPLY successfully completed.
+Sending (inet::EthernetIIFrame)arpREPLY to upper layer.
+** Event #175  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::EthernetIIFrame)arpREPLY from lower layer.
+DETAIL: Decapsulating frame `arpREPLY', passing up contained packet `arpREPLY' to higher layer
+Sending (inet::ARPPacket)arpREPLY to upper layer.
+** Event #176  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #177  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #178  T=1.0047529512  93% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::ARPPacket)arpREPLY from network.
+Sending (inet::ARPPacket)arpREPLY to arp.
+** Event #179  T=1.0047529512  93% completed   SimpleNetwork.tor.networkLayer.arp (ARP, id=14)
+Received (inet::ARPPacket)arpREPLY from network protocol.
+DETAIL: ARP_REPLY  src=128.128.128.5 / 0A-AA-00-00-00-04  dest=199.200.201.5 / 0A-AA-00-00-00-02
+DETAIL: Updating ARP cache entry: 128.128.128.5 <--> 0A-AA-00-00-00-04
+ARP resolution completed for 128.128.128.5. Sending 7 waiting packets from the queue
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+Sending out queued packet (inet::IPv4Datagram)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+DETAIL: Discarding packet
+** Event #180  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #181  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #182  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #183  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #184  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #185  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #186  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #187  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #188  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #189  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #190  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #191  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #192  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #193  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #194  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #195  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #196  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #197  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #198  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #199  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #200  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #201  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #202  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #203  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #204  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #205  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #206  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #207  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #208  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+=== Dequeuing packet === 
+
+** Event #209  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+** Event #210  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+** Event #211  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+** Event #212  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+** Event #213  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+** Event #214  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+** Event #215  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #216  T=1.0047529512  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #217  T=1.004754172  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+=== Dequeuing packet === 
+
+DETAIL: Start IFG period
+** Event #218  T=1.004754172  93% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #219  T=1.004754172  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame) from upper layer.
+** Event #220  T=1.0047541816  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #221  T=1.0047554024  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+=== Dequeuing packet === 
+
+DETAIL: Start IFG period
+** Event #222  T=1.0047554024  93% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #223  T=1.0047554024  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame) from upper layer.
+** Event #224  T=1.004755412  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #225  T=1.0047566328  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+=== Dequeuing packet === 
+
+DETAIL: Start IFG period
+** Event #226  T=1.0047566328  93% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #227  T=1.0047566328  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame) from upper layer.
+** Event #228  T=1.0047566424  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #229  T=1.0047578632  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+=== Dequeuing packet === 
+
+DETAIL: Start IFG period
+** Event #230  T=1.0047578632  93% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #231  T=1.0047578632  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame) from upper layer.
+** Event #232  T=1.0047578728  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #233  T=1.0047590936  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+=== Dequeuing packet === 
+
+DETAIL: Start IFG period
+** Event #234  T=1.0047590936  93% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #235  T=1.0047590936  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame) from upper layer.
+** Event #236  T=1.0047591032  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #237  T=1.004760324  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+=== Dequeuing packet === 
+
+DETAIL: Start IFG period
+** Event #238  T=1.004760324  93% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #239  T=1.004760324  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame) from upper layer.
+** Event #240  T=1.0047603336  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: Transmit next frame in output queue
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #241  T=1.0047609416  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #242  T=1.0047609512  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+** Event #243  T=1.005  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #244  T=1.005504172  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #245  T=1.005504172  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #246  T=1.005504172  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #247  T=1.0055054024  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #248  T=1.0055054024  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #249  T=1.0055054024  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #250  T=1.0055066328  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #251  T=1.0055066328  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #252  T=1.0055066328  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #253  T=1.0055078632  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #254  T=1.0055078632  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #255  T=1.0055078632  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #256  T=1.0055090936  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #257  T=1.0055090936  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #258  T=1.0055090936  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #259  T=1.005510324  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #260  T=1.005510324  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #261  T=1.005510324  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #262  T=1.0055109416  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #263  T=1.0055109416  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #264  T=1.0055109416  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #265  T=1.006  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #266  T=1.006004172  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #267  T=1.006004172  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Delivering (inet::IPv4Datagram) locally.
+** Event #268  T=1.006004172  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=1
+** Event #269  T=1.006004172  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+
+
+################ New packet arrived ###############
+
+
+Received 1442 bytes from 128.128.128.1 for msgId 13816906232455775816 (13558 bytes left to receive)
+insIdx: 1, hIdx: 1, last index: 1
+numSenders: 1, numToGrant: 1, insIdx: 1, hIdx: 1, Left shift: 1
+Pkt arrived, SchedState before handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handling pkt:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState before mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+Get prio for mesg. sInd: 0, grantPrio: 7, allPrio: 8, schedPrios: 1
+Send grant to: 128.128.128.1, mesgId: 13816906232455775816, prio: 1
+insIdx: 1, hIdx: 1, last index: 1
+numSenders: 1, numToGrant: 1, insIdx: 1, hIdx: 1, Left shift: 1
+insIdx: 1, hIdx: 1, last index: 1
+numSenders: 1, numToGrant: 1, insIdx: 1, hIdx: 1, Left shift: 1
+SchedState before handleGrantSent:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handleGrantSent:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState before handlePktArrival:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handlePktArrival:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+
+
+##############################################
+
+ 
+** Event #270  T=1.006004172  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Sending app packet  over IPv4.
+** Event #271  T=1.006004172  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.1
+Routing (inet::IPv4Datagram) with destination = 128.128.128.1, output interface = eth0, next hop address = 199.200.201.5
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #272  T=1.006004172  93% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #273  T=1.0060042392  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+** Event #274  T=1.0060054024  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #275  T=1.0060054024  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Delivering (inet::IPv4Datagram) locally.
+** Event #276  T=1.0060054024  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=1
+** Event #277  T=1.0060054024  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+
+
+################ New packet arrived ###############
+
+
+Received 1442 bytes from 128.128.128.1 for msgId 13816906232455775816 (12116 bytes left to receive)
+insIdx: 1, hIdx: 1, last index: 0
+numSenders: 1, numToGrant: 1, insIdx: 0, hIdx: 0, Left shift: 0
+Pkt arrived, SchedState before handling pkt:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handling pkt:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState before mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+Get prio for mesg. sInd: 0, grantPrio: 7, allPrio: 8, schedPrios: 1
+Send grant to: 128.128.128.1, mesgId: 13816906232455775816, prio: 1
+insIdx: 1, hIdx: 1, last index: 0
+numSenders: 1, numToGrant: 1, insIdx: 0, hIdx: 0, Left shift: 0
+insIdx: 1, hIdx: 1, last index: 0
+numSenders: 1, numToGrant: 1, insIdx: 0, hIdx: 0, Left shift: 0
+SchedState before handleGrantSent:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handleGrantSent:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState before handlePktArrival:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handlePktArrival:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+
+
+##############################################
+
+ 
+** Event #278  T=1.0060054024  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Sending app packet  over IPv4.
+** Event #279  T=1.0060054024  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.1
+Routing (inet::IPv4Datagram) with destination = 128.128.128.1, output interface = eth0, next hop address = 199.200.201.5
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #280  T=1.0060054024  93% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #281  T=1.0060054696  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+** Event #282  T=1.0060066328  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #283  T=1.0060066328  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Delivering (inet::IPv4Datagram) locally.
+** Event #284  T=1.0060066328  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=1
+** Event #285  T=1.0060066328  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+
+
+################ New packet arrived ###############
+
+
+Received 1442 bytes from 128.128.128.1 for msgId 13816906232455775816 (10674 bytes left to receive)
+insIdx: 1, hIdx: 1, last index: 0
+numSenders: 1, numToGrant: 1, insIdx: 0, hIdx: 0, Left shift: 0
+Pkt arrived, SchedState before handling pkt:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handling pkt:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState before mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+Get prio for mesg. sInd: 0, grantPrio: 7, allPrio: 8, schedPrios: 1
+Send grant to: 128.128.128.1, mesgId: 13816906232455775816, prio: 1
+insIdx: 1, hIdx: 1, last index: 0
+numSenders: 1, numToGrant: 1, insIdx: 0, hIdx: 0, Left shift: 0
+insIdx: 1, hIdx: 1, last index: 0
+numSenders: 1, numToGrant: 1, insIdx: 0, hIdx: 0, Left shift: 0
+SchedState before handleGrantSent:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handleGrantSent:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState before handlePktArrival:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handlePktArrival:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+
+
+##############################################
+
+ 
+** Event #286  T=1.0060066328  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Sending app packet  over IPv4.
+** Event #287  T=1.0060066328  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.1
+Routing (inet::IPv4Datagram) with destination = 128.128.128.1, output interface = eth0, next hop address = 199.200.201.5
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #288  T=1.0060066328  93% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #289  T=1.0060067  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+** Event #290  T=1.0060078632  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #291  T=1.0060078632  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Delivering (inet::IPv4Datagram) locally.
+** Event #292  T=1.0060078632  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=1
+** Event #293  T=1.0060078632  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+
+
+################ New packet arrived ###############
+
+
+Received 1442 bytes from 128.128.128.1 for msgId 13816906232455775816 (9232 bytes left to receive)
+insIdx: 1, hIdx: 1, last index: 0
+numSenders: 1, numToGrant: 1, insIdx: 0, hIdx: 0, Left shift: 0
+Pkt arrived, SchedState before handling pkt:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handling pkt:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState before mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+Get prio for mesg. sInd: 0, grantPrio: 7, allPrio: 8, schedPrios: 1
+Send grant to: 128.128.128.1, mesgId: 13816906232455775816, prio: 1
+SchedState before handleGrantSent:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handleGrantSent:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before handlePktArrival:
+	Sender: 128.128.128.1, senderInd: 0, headInd: 0, numToGrant: 1, numSenders: 1
+SchedState after handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+
+
+##############################################
+
+ 
+** Event #294  T=1.0060078632  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Sending app packet  over IPv4.
+** Event #295  T=1.0060078632  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.1
+Routing (inet::IPv4Datagram) with destination = 128.128.128.1, output interface = eth0, next hop address = 199.200.201.5
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #296  T=1.0060078632  93% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #297  T=1.0060079304  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+** Event #298  T=1.0060090936  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #299  T=1.0060090936  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Delivering (inet::IPv4Datagram) locally.
+** Event #300  T=1.0060090936  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=1
+** Event #301  T=1.0060090936  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+
+
+################ New packet arrived ###############
+
+
+Received 1442 bytes from 128.128.128.1 for msgId 13816906232455775816 (7790 bytes left to receive)
+Pkt arrived, SchedState before handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+
+
+##############################################
+
+ 
+** Event #302  T=1.006010324  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #303  T=1.006010324  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Delivering (inet::IPv4Datagram) locally.
+** Event #304  T=1.006010324  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=1
+** Event #305  T=1.006010324  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+
+
+################ New packet arrived ###############
+
+
+Received 1442 bytes from 128.128.128.1 for msgId 13816906232455775816 (6348 bytes left to receive)
+Pkt arrived, SchedState before handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+
+
+##############################################
+
+ 
+** Event #306  T=1.0060109416  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #307  T=1.0060109416  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Delivering (inet::IPv4Datagram) locally.
+** Event #308  T=1.0060109416  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=1
+** Event #309  T=1.0060109416  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+
+
+################ New packet arrived ###############
+
+
+Received 676 bytes from 128.128.128.1 for msgId 13816906232455775816 (5672 bytes left to receive)
+Pkt arrived, SchedState before handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+
+
+##############################################
+
+ 
+** Event #310  T=1.006504172  93% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #311  T=1.006504172  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #312  T=1.006504172  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #313  T=1.0065042296  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #314  T=1.0065042392  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #315  T=1.0065054024  93% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #316  T=1.0065054024  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #317  T=1.0065054024  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #318  T=1.00650546  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #319  T=1.0065054696  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #320  T=1.0065066328  93% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #321  T=1.0065066328  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #322  T=1.0065066328  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #323  T=1.0065066904  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #324  T=1.0065067  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #325  T=1.0065078632  93% completed   SimpleNetwork.host[1].eth[0].outputHook[0] (Lagger, id=71)
+** Event #326  T=1.0065078632  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #327  T=1.0065078632  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #328  T=1.0065079208  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #329  T=1.0065079304  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #330  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #331  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #332  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #333  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #334  T=1.0067547296  93% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.1
+Routing (inet::IPv4Datagram) with destination = 128.128.128.1, output interface = eth0, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.1 (proxy ARP)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #335  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #336  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #337  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #338  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[0].queue.classifier (EtherFrameClassifier, id=24)
+** Event #339  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[0].queue.dataQueue (DropTailQueue, id=26)
+
+=== Enqueuing packet === 
+=== Dequeuing packet === 
+
+** Event #340  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[0].queue.scheduler (PriorityScheduler, id=27)
+** Event #341  T=1.0067547296  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #342  T=1.0067547872  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #343  T=1.0067547968  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+** Event #344  T=1.00675596  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #345  T=1.00675596  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #346  T=1.00675596  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #347  T=1.00675596  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #348  T=1.00675596  93% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.1
+Routing (inet::IPv4Datagram) with destination = 128.128.128.1, output interface = eth0, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.1 (proxy ARP)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #349  T=1.00675596  93% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #350  T=1.00675596  93% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #351  T=1.00675596  93% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #352  T=1.00675596  93% completed   SimpleNetwork.tor.eth[0].queue.classifier (EtherFrameClassifier, id=24)
+** Event #353  T=1.00675596  93% completed   SimpleNetwork.tor.eth[0].queue.dataQueue (DropTailQueue, id=26)
+
+=== Enqueuing packet === 
+=== Dequeuing packet === 
+
+** Event #354  T=1.00675596  93% completed   SimpleNetwork.tor.eth[0].queue.scheduler (PriorityScheduler, id=27)
+** Event #355  T=1.00675596  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #356  T=1.0067560176  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #357  T=1.0067560272  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+** Event #358  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #359  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #360  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #361  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #362  T=1.0067571904  93% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.1
+Routing (inet::IPv4Datagram) with destination = 128.128.128.1, output interface = eth0, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.1 (proxy ARP)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #363  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #364  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #365  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #366  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[0].queue.classifier (EtherFrameClassifier, id=24)
+** Event #367  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[0].queue.dataQueue (DropTailQueue, id=26)
+
+=== Enqueuing packet === 
+=== Dequeuing packet === 
+
+** Event #368  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[0].queue.scheduler (PriorityScheduler, id=27)
+** Event #369  T=1.0067571904  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #370  T=1.006757248  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #371  T=1.0067572576  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+** Event #372  T=1.0067584208  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #373  T=1.0067584208  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #374  T=1.0067584208  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #375  T=1.0067584208  93% completed   SimpleNetwork.tor.eth[1].inputHook[0] (Lagger, id=29)
+** Event #376  T=1.0067584208  93% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.1
+Routing (inet::IPv4Datagram) with destination = 128.128.128.1, output interface = eth0, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.1 (proxy ARP)
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #377  T=1.0067584208  93% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #378  T=1.0067584208  93% completed   SimpleNetwork.tor.eth[0].outputHook[0] (Lagger, id=19)
+** Event #379  T=1.0067584208  93% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #380  T=1.0067584208  93% completed   SimpleNetwork.tor.eth[0].queue.classifier (EtherFrameClassifier, id=24)
+** Event #381  T=1.0067584208  93% completed   SimpleNetwork.tor.eth[0].queue.dataQueue (DropTailQueue, id=26)
+
+=== Enqueuing packet === 
+WARN: Queue full, dropping packet randomly.
+
+** Event #382  T=1.007  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #383  T=1.0075047872  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #384  T=1.0075047872  93% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #385  T=1.0075047872  93% completed   SimpleNetwork.host[0].eth[0].inputHook[0] (Lagger, id=53)
+** Event #386  T=1.0075060176  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #387  T=1.0075060176  93% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #388  T=1.0075060176  93% completed   SimpleNetwork.host[0].eth[0].inputHook[0] (Lagger, id=53)
+** Event #389  T=1.007507248  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #390  T=1.007507248  93% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #391  T=1.007507248  93% completed   SimpleNetwork.host[0].eth[0].inputHook[0] (Lagger, id=53)
+** Event #392  T=1.008  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #393  T=1.0080047872  93% completed   SimpleNetwork.host[0].eth[0].inputHook[0] (Lagger, id=53)
+** Event #394  T=1.0080047872  93% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.1
+Delivering (inet::IPv4Datagram) locally.
+** Event #395  T=1.0080047872  93% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=0
+** Event #396  T=1.0080047872  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+Prepared 1456 bytes for transmission from msgId 13816906232455775816 to destination 128.128.128.5 (4216 bytes left.)
+** Event #397  T=1.0080047872  93% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #398  T=1.0080047872  93% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #399  T=1.0080047872  93% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #400  T=1.0080060176  93% completed   SimpleNetwork.host[0].eth[0].inputHook[0] (Lagger, id=53)
+** Event #401  T=1.0080060176  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #402  T=1.0080060176  93% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.1
+Delivering (inet::IPv4Datagram) locally.
+** Event #403  T=1.0080060176  93% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=0
+** Event #404  T=1.0080060176  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+Prepared 1456 bytes for transmission from msgId 13816906232455775816 to destination 128.128.128.5 (2760 bytes left.)
+** Event #405  T=1.0080060176  93% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #406  T=1.0080060176  93% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #407  T=1.0080060176  93% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #408  T=1.008007248  93% completed   SimpleNetwork.host[0].eth[0].inputHook[0] (Lagger, id=53)
+** Event #409  T=1.008007248  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #410  T=1.008007248  93% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.1
+Delivering (inet::IPv4Datagram) locally.
+** Event #411  T=1.008007248  93% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=0
+** Event #412  T=1.008007248  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+Prepared 1456 bytes for transmission from msgId 13816906232455775816 to destination 128.128.128.5 (1304 bytes left.)
+** Event #413  T=1.008007248  93% completed   SimpleNetwork.host[0].udp (UDP, id=44)
+Sending app packet  over IPv4.
+** Event #414  T=1.008007248  93% completed   SimpleNetwork.host[0].networkLayer.ip (IPv4, id=46)
+Received (inet::UDPPacket) from upper layer.
+DETAIL: Sending datagram (inet::IPv4Datagram) with destination = 128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth0, next hop address = 199.200.201.1
+Sending (inet::IPv4Datagram) to output interface = eth0.
+** Event #415  T=1.008007248  93% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #416  T=1.0080084784  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #417  T=1.0085047872  93% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #418  T=1.0085047872  93% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #419  T=1.0085047872  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #420  T=1.008506008  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #421  T=1.0085060176  93% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #422  T=1.0085060176  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #423  T=1.0085060176  93% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #424  T=1.0085060176  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #425  T=1.0085072384  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #426  T=1.008507248  93% completed   SimpleNetwork.host[0].eth[0].outputHook[0] (Lagger, id=52)
+** Event #427  T=1.008507248  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #428  T=1.008507248  93% completed   SimpleNetwork.host[0].eth[0].encap (EtherEncap, id=55)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #429  T=1.008507248  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Frame (inet::EthernetIIFrame) arrived from higher layers, enqueueing
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #430  T=1.0085084688  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #431  T=1.0085084784  93% completed   SimpleNetwork.host[0].eth[0].mac (EtherMACFullDuplex, id=54)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+DETAIL: No more frames to send, transmitter set to idle
+** Event #432  T=1.008756508  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #433  T=1.008756508  93% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #434  T=1.008756508  93% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #435  T=1.008756508  93% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #436  T=1.008756508  93% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+** Event #437  T=1.008756508  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #438  T=1.008756508  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #439  T=1.008756508  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #440  T=1.008756508  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #441  T=1.008756508  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+=== Dequeuing packet === 
+
+** Event #442  T=1.008756508  93% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #443  T=1.008756508  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #444  T=1.0087577288  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #445  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #446  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+** Event #447  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #448  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #449  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #450  T=1.0087577384  93% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+** Event #451  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #452  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #453  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #454  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #455  T=1.0087577384  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+WARN: Queue full, dropping packet randomly.
+
+** Event #456  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[0].mac (EtherMACFullDuplex, id=22)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #457  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[0].encap (EtherEncap, id=23)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #458  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #459  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[0].inputHook[0] (Lagger, id=20)
+** Event #460  T=1.0087589688  93% completed   SimpleNetwork.tor.networkLayer.ip (IPv4, id=13)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Routing (inet::IPv4Datagram) with destination = 128.128.128.5, output interface = eth1, next hop address = <unspec>
+WARN: no next-hop address, using destination address 128.128.128.5 (proxy ARP)
+Sending (inet::IPv4Datagram) to output interface = eth1.
+** Event #461  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #462  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[1].outputHook[0] (Lagger, id=28)
+** Event #463  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[1].encap (EtherEncap, id=32)
+Received (inet::IPv4Datagram) from upper layer.
+DETAIL: Encapsulating higher layer packet `' for MAC
+Sending (inet::EthernetIIFrame) to lower layer.
+** Event #464  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[1].queue.classifier (EtherFrameClassifier, id=33)
+** Event #465  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[1].queue.dataQueue (DropTailQueue, id=35)
+
+=== Enqueuing packet === 
+=== Dequeuing packet === 
+
+** Event #466  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[1].queue.scheduler (PriorityScheduler, id=36)
+** Event #467  T=1.0087589688  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+Received (inet::EthernetIIFrame) from upper layer.
+DETAIL: Transmitting a copy of frame (inet::EthernetIIFrame)
+Transmission of (inet::EthernetIIFrame) started.
+** Event #468  T=1.0087601896  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndTransmission received
+Transmission of (inet::EthernetIIFrame) successfully completed.
+DETAIL: Start IFG period
+** Event #469  T=1.0087601992  93% completed   SimpleNetwork.tor.eth[1].mac (EtherMACFullDuplex, id=31)
+TRACE: Self-message (cMessage)EndIFG received
+DETAIL: IFG elapsed
+** Event #470  T=1.009  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #471  T=1.0095077288  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #472  T=1.0095077288  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #473  T=1.0095077288  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #474  T=1.0095101896  93% completed   SimpleNetwork.host[1].eth[0].mac (EtherMACFullDuplex, id=73)
+Reception of (inet::EthernetIIFrame) started.
+Reception of (inet::EthernetIIFrame) successfully completed.
+Sending (inet::EthernetIIFrame) to upper layer.
+** Event #475  T=1.0095101896  93% completed   SimpleNetwork.host[1].eth[0].encap (EtherEncap, id=74)
+Received (inet::EthernetIIFrame) from lower layer.
+DETAIL: Decapsulating frame `', passing up contained packet `' to higher layer
+Sending (inet::IPv4Datagram) to upper layer.
+** Event #476  T=1.0095101896  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #477  T=1.01  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #478  T=1.0100077288  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #479  T=1.0100077288  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Delivering (inet::IPv4Datagram) locally.
+** Event #480  T=1.0100077288  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=1
+** Event #481  T=1.0100077288  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+
+
+################ New packet arrived ###############
+
+
+Received 1456 bytes from 128.128.128.1 for msgId 13816906232455775816 (4216 bytes left to receive)
+Pkt arrived, SchedState before handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+
+
+##############################################
+
+ 
+** Event #482  T=1.0100101896  93% completed   SimpleNetwork.host[1].eth[0].inputHook[0] (Lagger, id=72)
+** Event #483  T=1.0100101896  93% completed   SimpleNetwork.host[1].networkLayer.ip (IPv4, id=65)
+Received (inet::IPv4Datagram) from network.
+DETAIL: Received datagram `' with dest=128.128.128.5
+Delivering (inet::IPv4Datagram) locally.
+** Event #484  T=1.0100101896  93% completed   SimpleNetwork.host[1].udp (UDP, id=63)
+Packet  received from network, dest port 2222
+Sending payload up to socket sockId=1
+** Event #485  T=1.0100101896  93% completed   SimpleNetwork.host[1].transportScheme (HomaTransport, id=62)
+
+
+################ New packet arrived ###############
+
+
+Received 1456 bytes from 128.128.128.1 for msgId 13816906232455775816 (2760 bytes left to receive)
+Pkt arrived, SchedState before handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handling pkt:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after mesgCompletHandler:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState before handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+SchedState after handlePktArrival:
+	Sender: 128.128.128.1, senderInd: -1, headInd: 1, numToGrant: 1, numSenders: 0
+
+
+##############################################
+
+ 
+** Event #486  T=1.011  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #487  T=1.012  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #488  T=1.013  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #489  T=1.014  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #490  T=1.015  93% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #491  T=1.016  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #492  T=1.017  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #493  T=1.018  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #494  T=1.019  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #495  T=1.02  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #496  T=1.021  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #497  T=1.022  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #498  T=1.023  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #499  T=1.024  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #500  T=1.025  94% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #501  T=1.026  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #502  T=1.027  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #503  T=1.028  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #504  T=1.029  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #505  T=1.03  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #506  T=1.031  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #507  T=1.032  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #508  T=1.033  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #509  T=1.034  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #510  T=1.035  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #511  T=1.036  95% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #512  T=1.037  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #513  T=1.038  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #514  T=1.039  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #515  T=1.04  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #516  T=1.041  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #517  T=1.042  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #518  T=1.043  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #519  T=1.044  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #520  T=1.045  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #521  T=1.046  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #522  T=1.047  96% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #523  T=1.048  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #524  T=1.049  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #525  T=1.05  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #526  T=1.051  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #527  T=1.052  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #528  T=1.053  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #529  T=1.054  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #530  T=1.055  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #531  T=1.056  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #532  T=1.057  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #533  T=1.058  97% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #534  T=1.059  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #535  T=1.06  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #536  T=1.061  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #537  T=1.062  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #538  T=1.063  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #539  T=1.064  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #540  T=1.065  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #541  T=1.066  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #542  T=1.067  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #543  T=1.068  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #544  T=1.069  98% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #545  T=1.07  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #546  T=1.071  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #547  T=1.072  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #548  T=1.073  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #549  T=1.074  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #550  T=1.075  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #551  T=1.076  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #552  T=1.077  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #553  T=1.078  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #554  T=1.079  99% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+** Event #555  T=1.08  100% completed   SimpleNetwork.host[0].transportScheme (HomaTransport, id=43)
+
+<!> Simulation time limit reached -- simulation stopped at event #556, t=1.08.
+
+
+Calling finish() at end of Run #0...
+Clear all sockets
+Clear all sockets
+
+End.

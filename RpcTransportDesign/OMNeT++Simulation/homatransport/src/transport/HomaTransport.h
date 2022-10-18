@@ -435,6 +435,8 @@ class HomaTransport : public cSimpleModule
         std::vector<uint32_t> sumInflightUnschedPerPrio;
         std::vector<uint32_t> sumInflightSchedPerPrio;
 
+        
+
         friend class CompareBytesToGrant;
         friend class ReceiveScheduler;
         friend class TrafficPacer;
@@ -843,7 +845,6 @@ class HomaTransport : public cSimpleModule
     };
 
   PUBLIC:
-
     // Handles the transmission of outbound messages based on the logic of
     // HomaProtocol.
     SendController sxController;
@@ -971,6 +972,8 @@ class HomaTransport : public cSimpleModule
     // carries the last value of active scheduled senders and time duration that
     // value was maintained.
     static simsignal_t activeSchedsSignal;
+
+   
 };//End HomaTransport
 
 /**

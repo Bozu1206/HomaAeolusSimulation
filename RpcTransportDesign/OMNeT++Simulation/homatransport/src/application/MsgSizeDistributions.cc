@@ -124,15 +124,10 @@ MsgSizeDistributions::getSizeAndInterarrival(int &msgSize, int &destHostId,
             return;
 
         case DistributionChoice::SIMPLE_WORKLOAD: 
-            std::cout << "Test with deterministic dist" << endl;
-            msgSize = 10000; 
+            EV << "Test with deterministic dist" << endl;
+            msgSize = 15000; 
+            nextInterarrivalTime = 1; 
 
-            if (simTime() > 0.5)
-            {
-                nextInterarrivalTime = 500; 
-            }
-
-            nextInterarrivalTime = 0.5; 
             return; 
 
         default:

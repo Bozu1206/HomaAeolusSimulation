@@ -33,9 +33,12 @@ void DropTailQueue::initialize()
     queue.setName(par("queueName"));
 
     // Configure the HomaPkt priority sort function
-    if (par("transportType").stdstringValue() == "HomaTransport") {
+    if (par("transportType").stdstringValue() == "HomaTransport") 
+    {   
+        EV << "Selecting HomaTransport for queues..." << endl; 
         queue.setup(&HomaPkt::comparePrios);
-    } else if (par("transportType").stdstringValue() == "PseudoIdealTransport") {
+    } else if (par("transportType").stdstringValue() == "PseudoIdealTransport") 
+    {
         queue.setup(&HomaPkt::compareSizeAndPrios);
     }
 
@@ -47,7 +50,7 @@ void DropTailQueue::initialize()
 
     // configuration
     frameCapacity = par("frameCapacity");
-    EV_INFO << "FRAME CAPACITY : " << frameCapacity << endl; 
+    EV_DEBUG << "Capacity : " << frameCapacity << endl; 
 
     mac = getNextMacLayer();
     if (!mac) {
@@ -58,14 +61,24 @@ void DropTailQueue::initialize()
 
 cMessage *DropTailQueue::enqueue(cMessage *msg)
 {
-    EV << "\n \n === Enqueuing packet === \n \n";
+    EV << "\n=== Enqueuing packet === \n";
+
     double txRate = 0.0; // transmit speed of the next mac layer 
-    if (mac) {
+    if (mac) 
+    {
         txRate = dynamic_cast<EtherMACBase*>(mac)->getTxRate();
     }
 
-    if (frameCapacity && queue.length() >= frameCapacity) {
-        EV << "\t >>> Queue full, dropping packet.\n";
+    if (uniform(0, 1) < 0.3)
+    {
+        EV_WARN << "Queue full, dropping packet randomly.\n\n";
+        delete msg; 
+        return NULL;
+    }
+
+    if (frameCapacity && queue.length() >= frameCapacity) 
+    {
+        EV_WARN << ">>> Queue full, dropping packet.\n\n";
         return msg;
     }
 
@@ -107,7 +120,7 @@ cMessage *DropTailQueue::enqueue(cMessage *msg)
 
 cMessage *DropTailQueue::dequeue()
 {
-    EV_INFO << "\n \n === Dequeuing packet (" << getFullName() << ") === \n \n";
+    EV_INFO << "=== Dequeuing packet === \n\n";
     if (queue.empty())
         return NULL;
 
@@ -178,6 +191,8 @@ DropTailQueue::getNextMacLayer()
     return nextModule;
 
 }
+
+
 
 } // namespace inet
 

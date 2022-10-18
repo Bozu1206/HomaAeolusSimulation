@@ -39,16 +39,12 @@
         </appConfig>
     </hostConfig>
 
-    <hostConfig id="2">
+    <!-- <hostConfig id="2">
         <transportConfig>
         </transportConfig>
         <appConfig>
             <isSender>false</isSender>
             <destIds></destIds>
         </appConfig>
-    </hostConfig>
-
-
-
-
+    </hostConfig> -->
 </topologyConfig>
